@@ -1,0 +1,40 @@
+﻿<Page x:Class="SpeedCubeTimer.SettingsP"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SpeedCubeTimer"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsP">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="333*"/>
+            <RowDefinition Height="59*"/>
+
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="settings_tb" FontSize="35" Grid.Column="1" Text="Settings" TextAlignment="Center"/>
+        <StackPanel x:Name="stp1" Grid.Column="0" Grid.Row="1" Grid.RowSpan="1"/>
+
+        <Button x:Name="back_b" Grid.Column="0" FontSize="20" Content="Back" Click="back_b_Click"/>
+        <ScrollViewer Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1" Grid.RowSpan="1">
+            <Grid x:Name="grid1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="stp2" Grid.Column="0" Grid.Row="1"/>
+                <StackPanel x:Name="stp3" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </ScrollViewer>
+        <Button x:Name="save_b" Grid.Row="2" Grid.Column="1" Content="SAVE" FontSize="20" Click="save_b_Click"/>
+    </Grid>
+</Page>

@@ -1,0 +1,10 @@
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\bin\Release\ConsoleTimer.exe.config
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\bin\Release\ConsoleTimer.exe
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\bin\Release\ConsoleTimer.pdb
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\bin\Release\TimerCode.dll
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\bin\Release\TimerCode.pdb
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.csproj.CoreCompileInputs.cache
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.csproj.CopyComplete
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.exe
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.pdb
+C:\Users\Сеня\source\repos\SpeedCubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.csprojAssemblyReference.cache

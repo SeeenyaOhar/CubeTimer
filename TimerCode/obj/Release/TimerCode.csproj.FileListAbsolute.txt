@@ -1,0 +1,6 @@
+C:\Users\Сеня\source\repos\SpeedCubeTimer\TimerCode\bin\Release\TimerCode.dll
+C:\Users\Сеня\source\repos\SpeedCubeTimer\TimerCode\bin\Release\TimerCode.pdb
+C:\Users\Сеня\source\repos\SpeedCubeTimer\TimerCode\obj\Release\TimerCode.csproj.CoreCompileInputs.cache
+C:\Users\Сеня\source\repos\SpeedCubeTimer\TimerCode\obj\Release\TimerCode.dll
+C:\Users\Сеня\source\repos\SpeedCubeTimer\TimerCode\obj\Release\TimerCode.pdb
+C:\Users\Сеня\source\repos\SpeedCubeTimer\TimerCode\obj\Release\TimerCode.csprojAssemblyReference.cache
