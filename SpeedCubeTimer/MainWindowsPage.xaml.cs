@@ -445,7 +445,7 @@ namespace SpeedCubeTimer
 
         private void history_b_Click(object sender, RoutedEventArgs e)
         {
-            mw.Content = new History(mw);
+            mw.Content = new History(mw, this);
         }
 
         private void dnf_Click(object sender, RoutedEventArgs e)

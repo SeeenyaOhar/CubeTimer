@@ -22,23 +22,26 @@ namespace SpeedCubeTimer
     {
         StackPanel[] sps = new StackPanel[3];
         MainWindow mw;
-        public History(MainWindow mw)
+        MainWindowsPage mwp;
+        public History(MainWindow mw, MainWindowsPage mwp)
         {
             InitializeComponent();
             //DivideGrid(Time.History.Count);
             ImplementUI(Time.History.Count);
             this.mw = mw;
+            this.mwp = mwp;
         }
         void ImplementUI(Int32 countofelements)
         {
             Int32 index = countofelements;
             var index2 = 0;
-            var ar = Time.History.ToList();
+            List<Time> ar = Time.History.ToList();
+            
             grid.RowDefinitions[0].Height = new GridLength(4, GridUnitType.Star);
             grid.RowDefinitions[1].Height = new GridLength(11, GridUnitType.Star);
             if (countofelements > 3)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(5, GridUnitType.Star)});
                 }
@@ -47,7 +50,7 @@ namespace SpeedCubeTimer
             {
                 if (countofelements != 0)
                 {
-                    for (int i = 0; i < countofelements; i++)
+                    for (int i = 0; i < countofelements - 1; i++)
                     {
                         grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(5, GridUnitType.Star) });
                     }
@@ -65,14 +68,15 @@ namespace SpeedCubeTimer
             }
             Grid.SetColumnSpan(history_tb, 3);
             Grid.SetRow(history_tb, 0);
+            
             sps = new StackPanel[grid.ColumnDefinitions.Count];
-            for (int i = 0; i < grid.ColumnDefinitions.Count; i++)
+            for (int i = 0; i < grid.ColumnDefinitions.Count - 1; i++)
             {
                 sps[i] = new StackPanel();
                 grid.Children.Add(sps[i]);
                 Grid.SetRow(sps[i], 2);
                 Grid.SetColumn(sps[i], i + 1);
-                var btn = new Button() { Content = ar.Last().ToString(), FontSize = 14, Name = $"btn{index2}" };//TODO: FIX BUG
+                var btn = new Button() { Content = ar.Last().ToString(), FontSize = 14, Name = $"btn{index2}" };
                 btn.Click += Btn_Click;
                 ar.RemoveAt(ar.Count - 1);
                 sps[i].Children.Add(btn);
@@ -115,7 +119,7 @@ namespace SpeedCubeTimer
 
         private void Back_b_Click(object sender, RoutedEventArgs e)
         {
-
+            mw.Content = mwp;
         }
     }
 }
