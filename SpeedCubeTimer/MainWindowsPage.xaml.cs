@@ -31,6 +31,8 @@ namespace SpeedCubeTimer
             scramble.Text = scramble1.ToString();
             mw.Closing += MainWindow_Closing;
             this.mw = mw;
+            
+            tiw.Show();
             mw.KeyDown += Window_KeyDown;
             mw.KeyUp += Window_KeyUp;
             ScrambleShow(scramble1);
@@ -114,7 +116,7 @@ namespace SpeedCubeTimer
         Boolean CanTimerStart = true;
         Scramble scramble1 = new Scramble();
         Boolean stoped;
-      
+
 
 
 

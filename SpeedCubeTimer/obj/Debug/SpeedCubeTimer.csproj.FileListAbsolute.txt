@@ -70,3 +70,5 @@ C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\Sp
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\SpeedCubeTimer.csproj.CopyComplete
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\SpeedCubeTimer.exe
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\SpeedCubeTimer.pdb
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\TimeInfoWindow.g.cs
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\TimeInfoWindow.baml
