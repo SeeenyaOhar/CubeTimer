@@ -16,6 +16,7 @@ using TimerCode.Code;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
+using System.Runtime.CompilerServices;
 
 namespace SpeedCubeTimer
 {
@@ -31,13 +32,13 @@ namespace SpeedCubeTimer
             scramble.Text = scramble1.ToString();
             mw.Closing += MainWindow_Closing;
             this.mw = mw;
-            
-            
+
+
             mw.KeyDown += Window_KeyDown;
             mw.KeyUp += Window_KeyUp;
             ScrambleShow(scramble1);
             stoped = false;
-            
+
             var path = App.SolvedTimesTextDocPath;
             if (File.Exists(path))
             {
@@ -55,10 +56,13 @@ namespace SpeedCubeTimer
                 };
 
             }
-            
+            Thread thr = new Thread(threadmethod);
+            thr.IsBackground = true;
+            thr.Priority = ThreadPriority.AboveNormal;
+            thr.Start();
         }
 
-       
+
 
         CubingTimer Timer = null;
         Boolean sdnf = false;
@@ -120,7 +124,35 @@ namespace SpeedCubeTimer
 
 
 
+        public void threadmethod(object state)
+        {
+            try
+            {
+                RuntimeHelpers.PrepareConstrainedRegions();
+                while (true)
+                {
 
+                    Thread.Sleep(10000);
+                    SerializeHistory();
+                    
+
+                }
+            }
+            catch (ThreadAbortException)
+            {
+                SerializeHistory();
+                
+            }
+    }
+        private void SerializeHistory()
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            var path = App.SolvedTimesTextDocPath;
+            using (Stream str = new FileStream(path, FileMode.Create))
+            {
+                bf.Serialize(str, Time.History);
+            }
+        }
         private void ScrambleShow(Scramble scramble) // show it in grid1
         {
             CubeState cs = CubeState.Scramble(scramble);
@@ -238,12 +270,7 @@ namespace SpeedCubeTimer
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            var path = App.SolvedTimesTextDocPath;
-            using (Stream str = new FileStream(path, FileMode.Create))
-            {
-                bf.Serialize(str, Time.History);
-            }
+            SerializeHistory();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

@@ -5,39 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeedCubeTimer"
         mc:Ignorable="d"
-        Title="TimeInfoWindow" Height="400" Width="400">
+        Title="TimeInfoWindow" Height="353" Width="387" ResizeMode="CanMinimize">
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="62*"/>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="59*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="76*"/>
-            <RowDefinition Height="188*"/>
-            <RowDefinition Height="155*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="24*"/>
+            <RowDefinition Height="196*"/>
+            <RowDefinition Height="69*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="title" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
-        <Grid Grid.Column="1" Grid.Row="1" Background="Black" x:Name="grid1" >
+        <TextBlock x:Name="title" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" TextAlignment="Center" FontSize="26" Grid.RowSpan="2"/>
+        <TextBlock x:Name="scr_tb" Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="3" Height="19"/>
+        <Grid Grid.Column="1" Grid.Row="2" Background="Black" x:Name="grid1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="15"/>
 
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SpeedCubeTimer"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainWindowsPage">
+      Title="MainWindowsPage" >
 
     <Grid x:Name="grid">
         <Grid.ColumnDefinitions>

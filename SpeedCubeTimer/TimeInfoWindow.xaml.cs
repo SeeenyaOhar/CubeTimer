@@ -102,7 +102,9 @@ namespace SpeedCubeTimer
         {
             InitializeComponent();
             title.Text = $"Info - {tme.ToString()}";
-            ScrambleShow(tme.Scramble.ToScramble());
+            var scramble = tme.Scramble;
+            ScrambleShow(scramble.ToScramble());
+            scr_tb.Text = scramble;
             
         }
         private void ScrambleShow(Scramble scramble) // show it in grid1
