@@ -16,18 +16,48 @@ namespace TimerCode.Code
     [Serializable]
     public class Scramble
     {
-        public ScrambleElements[] scrambleElements { get; private set; } = new ScrambleElements[20];
+        public static Scramble Empty { get; set; } = new Scramble(false);
+        public ScrambleElements[] scrambleElements { get; private set; }
         public Scramble()
         {
             RandomSE rse = new RandomSE();
-            
-            for(Int32 i = 0; i < 20; i++)
+            scrambleElements = new ScrambleElements[20];
+            for (Int32 i = 0; i < 20; i++)
             {
                 scrambleElements[i] = rse.GetRandomSE();
-
+                
             }
         }
-
+        // <summary>
+        // Boolean object is useful for overloading
+        // </summary>
+        // <param name="element"></param>
+        private Scramble(Boolean sf)
+        {
+            scrambleElements = new ScrambleElements[0];
+        }
+        // <summary>
+        // Only for empty object.
+        // </summary>
+        public void AddElement(ScrambleElements el)
+        {
+            
+            if (scrambleElements.Count() == 20)
+            {
+                throw new InvalidOperationException("Method \"AddElement(el)\" is only avaliable for empty Scramble object"); // TODO: FIX BUG
+            }
+            else
+            {
+                
+                var v = scrambleElements.ToList();
+                v.Add(el);
+                scrambleElements = v.ToArray();
+                if (this.scrambleElements.Count() == 20)
+                {
+                    Empty = new Scramble(false);
+                }
+            }
+        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

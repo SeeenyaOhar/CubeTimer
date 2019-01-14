@@ -112,7 +112,8 @@ namespace SpeedCubeTimer
             if (obj != null)
             {
                 Time t = Time.History[Time.History.Count - index2 - 1];
-                MessageBox.Show($"{t} -- {t.Scramble}");
+                TimeInfoWindow miw = new TimeInfoWindow(t);
+                miw.Show();
             }
            
         }

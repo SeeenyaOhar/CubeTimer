@@ -32,7 +32,7 @@ namespace SpeedCubeTimer
             mw.Closing += MainWindow_Closing;
             this.mw = mw;
             
-            tiw.Show();
+            
             mw.KeyDown += Window_KeyDown;
             mw.KeyUp += Window_KeyUp;
             ScrambleShow(scramble1);
@@ -55,6 +55,7 @@ namespace SpeedCubeTimer
                 };
 
             }
+            
         }
 
        

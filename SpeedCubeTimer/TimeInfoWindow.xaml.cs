@@ -15,6 +15,84 @@ using TimerCode.Code;
 
 namespace SpeedCubeTimer
 {
+    public static class StringExtension
+    {
+        public static Scramble ToScramble(this String str)
+        {
+            var arg = Scramble.Empty;
+            var split = str.Split(' ');
+            Scramble finalobject = new Scramble();
+            foreach (var v in split)
+            {
+                M1(v, ref arg);
+            }
+            Task.WaitAll();
+            return arg;
+        }
+        static void M1(String str, ref Scramble scramble)
+        {
+
+            switch (str)
+            {
+                case "R":
+                    scramble.AddElement(ScrambleElements.R);
+                    break;
+                case "L":
+                    scramble.AddElement(ScrambleElements.L);
+                    break;
+                case "U":
+                    scramble.AddElement(ScrambleElements.U);
+                    break;
+                case "D":
+                    scramble.AddElement(ScrambleElements.D);
+                    break;
+                case "F":
+                    scramble.AddElement(ScrambleElements.F);
+                    break;
+                case "B":
+                    scramble.AddElement(ScrambleElements.B);
+                    break;
+                case "R'":
+                    scramble.AddElement(ScrambleElements.R1);
+                    break;
+                case "L'":
+                    scramble.AddElement(ScrambleElements.L1);
+                    break;
+                case "U'":
+                    scramble.AddElement(ScrambleElements.U1);
+                    break;
+                case "D'":
+                    scramble.AddElement(ScrambleElements.D1);
+                    break;
+                case "F'":
+                    scramble.AddElement(ScrambleElements.F1);
+                    break;
+                case "B'":
+                    scramble.AddElement(ScrambleElements.B1);
+                    break;
+                case "R2":
+                    scramble.AddElement(ScrambleElements.R2);
+                    break;
+                case "L2":
+                    scramble.AddElement(ScrambleElements.L2);
+                    break;
+                case "U2":
+                    scramble.AddElement(ScrambleElements.U2);
+                    break;
+                case "D2":
+                    scramble.AddElement(ScrambleElements.D2);
+                    break;
+                case "F2":
+                    scramble.AddElement(ScrambleElements.F2);
+                    break;
+                case "B2":
+                    scramble.AddElement(ScrambleElements.B2);
+                    break;
+            }
+
+
+        }
+    }
     /// <summary>
     /// Interaction logic for TimeInfoWindow.xaml
     /// </summary>
@@ -24,7 +102,7 @@ namespace SpeedCubeTimer
         {
             InitializeComponent();
             title.Text = $"Info - {tme.ToString()}";
-            // TODO: Continue developing
+            ScrambleShow(tme.Scramble.ToScramble());
             
         }
         private void ScrambleShow(Scramble scramble) // show it in grid1
@@ -36,7 +114,7 @@ namespace SpeedCubeTimer
             int index = 0;// of array of elements in Side.Elements property
             for (int i = 0; i < 3; i++) // white color
             {
-                column = 5;
+                column = 6;
                 for (int i2 = 0; i2 < 3; i2++)
                 {
 
@@ -51,11 +129,11 @@ namespace SpeedCubeTimer
                 row++;
             }
             row = 4 + 1;
-            column = 5;
+            column = 6;
             index = 0;
             for (int i = 0; i < 3; i++) // green color
             {
-                column = 5;
+                column = 6;
                 for (int i2 = 0; i2 < 3; i2++)
                 {
                     Canvas canvas = new Canvas();
@@ -69,11 +147,11 @@ namespace SpeedCubeTimer
                 row++;
             }
             row = 4 + 1;
-            column = 1;
+            column = 2;
             index = 0;
             for (int i = 0; i < 3; i++) // orange color
             {
-                column = 1;
+                column = 2;
                 for (int i2 = 0; i2 < 3; i2++)
                 {
                     Canvas canvas = new Canvas();
@@ -87,11 +165,11 @@ namespace SpeedCubeTimer
                 row++;
             }
             row = 4 + 1;
-            column = 9;
+            column = 10;
             index = 0;
             for (int i = 0; i < 3; i++) // Red color
             {
-                column = 9;
+                column = 10;
                 for (int i2 = 0; i2 < 3; i2++)
                 {
                     Canvas canvas = new Canvas();
@@ -105,11 +183,11 @@ namespace SpeedCubeTimer
                 row++;
             }
             row = 4 + 1;
-            column = 13;
+            column = 14;
             index = 0;
             for (int i = 0; i < 3; i++) // blue color
             {
-                column = 13;
+                column = 14;
                 for (int i2 = 0; i2 < 3; i2++)
                 {
                     Canvas canvas = new Canvas();
@@ -123,11 +201,11 @@ namespace SpeedCubeTimer
                 row++;
             }
             row = 8 + 1;
-            column = 5;
+            column = 6;
             index = 0;
             for (int i = 0; i < 3; i++) // green color
             {
-                column = 5;
+                column = 6;
                 for (int i2 = 0; i2 < 3; i2++)
                 {
                     Canvas canvas = new Canvas();
