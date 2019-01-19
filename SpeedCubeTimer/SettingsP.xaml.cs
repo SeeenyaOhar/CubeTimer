@@ -31,7 +31,7 @@ namespace SpeedCubeTimer
         {
             InitializeComponent();
             
-            var general_button = new Button() { Content = "General" };
+            var general_button = new Button() { Content = (String)Resources.MergedDictionaries[0]["general_menu"] };
             general_button.Click += General_button_Click;
             this.mw = mw;
             stp1.Children.Add(general_button);
@@ -46,7 +46,7 @@ namespace SpeedCubeTimer
         {
             stp2.Children.RemoveRange(0, stp2.Children.Count);
             stp3.Children.RemoveRange(0, stp3.Children.Count);
-            var tb = new TextBlock() { Text = "Path of file, in which solved times are saved.", TextAlignment = TextAlignment.Center };
+            var tb = new TextBlock() { Text = (String)Resources.MergedDictionaries[0]["save_file_tb"], TextAlignment = TextAlignment.Center };
             stp2.Children.Add(tb);
             var tbox = new System.Windows.Controls.TextBox();
             tbox.Text = App.SolvedTimesTextDocPath;

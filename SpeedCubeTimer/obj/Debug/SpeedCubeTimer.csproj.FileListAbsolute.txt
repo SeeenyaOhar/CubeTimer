@@ -72,3 +72,9 @@ C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\Sp
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\SpeedCubeTimer.pdb
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\TimeInfoWindow.g.cs
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\TimeInfoWindow.baml
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\History\History.en-US.xaml
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\MainWindowsPage\MainWindowsPage.en-US.xaml
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\MainWindowsPage\MainWindowsPage.ru-RU.xaml
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\SettingsP\SettingsP.en-US.xaml
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\TimeInfoWindow\TimeInfoWindow.en-US.xaml
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\SpeedCubeTimer_Content.g.cs

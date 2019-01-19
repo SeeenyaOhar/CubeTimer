@@ -7,7 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="MainWindowsPage" >
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="loc/MainWindowsPage/MainWindowsPage.en-US.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="55*"/>
@@ -28,8 +34,8 @@
                    VerticalAlignment="Center" Grid.Row="2"
                    FontSize="50"  Grid.Column="2" Grid.ColumnSpan="2"   />
         <Button x:Name="settings_b" Grid.Row="0" Grid.Column="5"
-                FontSize="20" Content="S" Click="settings_b_Click"/>
-        <Button x:Name="history_b" Grid.Row="0" Grid.Column="0" Content="H" FontSize="20" Click="history_b_Click" />
+                FontSize="20" Content="{DynamicResource ResourceKey=settings_but}" Click="settings_b_Click"/>
+        <Button x:Name="history_b" Grid.Row="0" Grid.Column="0" Content="{DynamicResource ResourceKey=history_but}" FontSize="20" Click="history_b_Click" />
         <TextBlock x:Name="scramble" FontSize="14" Grid.Row="0" Grid.Column="2"  Grid.ColumnSpan="2" HorizontalAlignment="Center"  />
         <TextBlock x:Name="avgs" FontSize="10" Grid.Row="1" Grid.Column="4" />
         <StackPanel x:Name="sp" Grid.Row="1" Grid.RowSpan="2" Grid.Column="4"/>

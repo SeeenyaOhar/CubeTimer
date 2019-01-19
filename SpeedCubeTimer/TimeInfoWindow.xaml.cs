@@ -101,7 +101,7 @@ namespace SpeedCubeTimer
         public TimeInfoWindow(Time tme)
         {
             InitializeComponent();
-            title.Text = $"Info - {tme.ToString()}";
+            title.Text = $"{this.Resources.MergedDictionaries[0]["info_text"]} - {tme.ToString()}";
             var scramble = tme.Scramble;
             ScrambleShow(scramble.ToScramble());
             scr_tb.Text = scramble;
