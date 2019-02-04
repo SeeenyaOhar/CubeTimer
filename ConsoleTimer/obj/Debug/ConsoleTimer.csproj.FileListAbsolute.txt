@@ -18,3 +18,7 @@ C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Debug\Cons
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Debug\ConsoleTimer.csproj.CopyComplete
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Debug\ConsoleTimer.exe
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Debug\ConsoleTimer.pdb
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Debug\System.Windows.Interactivity.xml

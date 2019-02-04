@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TimerCode.Code;
 using System.Windows.Media;
+using System.Windows.Controls;
+
 namespace SpeedCubeTimer
 {
     internal static class CECExtension
@@ -22,6 +24,8 @@ namespace SpeedCubeTimer
                 default: return null;
             }
         }
+        
+       
     }
 
 

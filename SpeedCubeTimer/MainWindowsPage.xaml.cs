@@ -351,6 +351,7 @@ namespace SpeedCubeTimer
             Grid.SetRow(stp, 1);
             Grid.SetRowSpan(stp, 2);
             Grid.SetColumn(stp, 2);
+            Grid.SetColumnSpan(stp, 2);
             stp.Children.Add(new TextBlock() { Text = $"avg3 = {avg3}" });
             stp.Children.Add(new TextBlock() { Text = $"avg5 = {avg5}" });
             stp.Children.Add(new TextBlock() { Text = $"avg12 = {avg12}" });

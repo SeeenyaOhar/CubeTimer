@@ -20,9 +20,11 @@ namespace SpeedCubeTimer
         public MainWindow()
         {
             InitializeComponent();
+            
             App.Deserialize();
-
-            this.Closing += MainWindow_Closing;
+            //new LanguageChange().Show();
+            // TODO: Implement a changing language UI
+            this.Closing += MainWindow_Closing; // TODO: Construct command for these events
             this.Content = new MainWindowsPage(this);
         }
 

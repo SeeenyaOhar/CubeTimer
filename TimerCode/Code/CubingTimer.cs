@@ -42,6 +42,7 @@ namespace TimerCode.Code
                 {
                     Thread.Sleep(8); // do not work truely
                      CurrentTime.AddMiliseconds(10);
+                    
                 }
             }
             );
