@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:String x:Key="ResourceDictionaryName">Loc-ru-RU</sys:String>
-    <sys:String x:Key="settings_but">Н</sys:String>
-    <sys:String x:Key="history_but">И</sys:String>
+    <sys:String x:Key="settings_but">Настройки</sys:String>
+    <sys:String x:Key="history_but">История</sys:String>
 </ResourceDictionary>

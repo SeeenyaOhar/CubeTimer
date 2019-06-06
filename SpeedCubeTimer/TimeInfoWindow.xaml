@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeedCubeTimer"
         mc:Ignorable="d"
-         Height="353" Width="387" ResizeMode="CanMinimize">
+         Height="353" Width="387" ResizeMode="CanMinimize" Style="{StaticResource WindowBase}">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,8 +25,8 @@
             <RowDefinition Height="196*"/>
             <RowDefinition Height="69*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="title" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" TextAlignment="Center" FontSize="26" Grid.RowSpan="2"/>
-        <TextBlock x:Name="scr_tb" Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="3" Height="19"/>
+        <TextBlock Style="{StaticResource TitleText}" x:Name="title" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" TextAlignment="Center" FontSize="26" Grid.RowSpan="2"/>
+        <TextBlock Style="{StaticResource TitleText}" x:Name="scr_tb" Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="3" Height="19"/>
         <Grid Grid.Column="1" Grid.Row="2" Background="Black" x:Name="grid1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>

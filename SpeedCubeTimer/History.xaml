@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SpeedCubeTimer"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="History">
+      Title="History" Style="{StaticResource PageBase}">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -28,9 +28,9 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="history_tb" FontSize="26" Text="{DynamicResource title}" 
+                <TextBlock Style="{StaticResource TitleText}" x:Name="history_tb"  Text="{DynamicResource title}" 
                    VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="5"/>
-                <Button x:Name="back_b" Grid.Column="0" Grid.Row="0" Content="{DynamicResource back}" FontSize="20" Click="Back_b_Click"/>
+                <Button Style="{StaticResource ButtonStyle}"  x:Name="back_b" Grid.Column="0" Grid.Row="0" Content="{DynamicResource back}" FontSize="20" Click="Back_b_Click"/>
             </Grid>
         </ScrollViewer>
         

@@ -26,10 +26,10 @@
             <RowDefinition Height="59*"/>
 
         </Grid.RowDefinitions>
-        <TextBlock x:Name="settings_tb" FontSize="35" Grid.Column="1" Text="{DynamicResource settings_title}" TextAlignment="Center"/>
+        <TextBlock Style="{StaticResource TitleText}"  x:Name="settings_tb" Grid.Column="1" Text="{DynamicResource settings_title}" TextAlignment="Center"/>
         <StackPanel x:Name="stp1" Grid.Column="0" Grid.Row="1" Grid.RowSpan="1"/>
 
-        <Button x:Name="back_b" Grid.Column="0" FontSize="20" Content="{DynamicResource back_but}" Click="back_b_Click"/>
+        <Button Style="{StaticResource ButtonStyle}"  x:Name="back_b" Grid.Column="0" FontSize="20" Content="{DynamicResource back_but}" Click="back_b_Click"/>
         <ScrollViewer Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1" Grid.RowSpan="1">
             <Grid x:Name="grid1">
                 <Grid.ColumnDefinitions>
@@ -41,6 +41,6 @@
                 <StackPanel x:Name="stp3" Grid.Column="1" Grid.Row="1"/>
             </Grid>
         </ScrollViewer>
-        <Button x:Name="save_b" Grid.Row="2" Grid.Column="1" Content="{DynamicResource save_but}" FontSize="20" Click="save_b_Click"/>
+        <Button Style="{StaticResource ButtonStyle}" x:Name="save_b" Grid.Row="2" Grid.Column="1" Content="{DynamicResource save_but}" FontSize="20" Click="save_b_Click"/>
     </Grid>
 </Page>

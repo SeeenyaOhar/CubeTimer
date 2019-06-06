@@ -27,10 +27,18 @@ namespace SpeedCubeTimer
         {
             InitializeComponent();
             //DivideGrid(Time.History.Count);
+            LocUtil.LanguageChanged += LocUtil_LanguageChanged;
+            LocUtil.SwitchLanguage(this, App.Language.ToString());
             ImplementUI(Time.History.Count);
             this.mw = mw;
             this.mwp = mwp;
         }
+
+        private void LocUtil_LanguageChanged(object sender, LocUtil.LanguageChangedEventArgs e)
+        {
+            LocUtil.SwitchLanguage(this, e.infivechars);
+        }
+
         void ImplementUI(Int32 countofelements)
         {
             Int32 index = countofelements;
@@ -76,7 +84,7 @@ namespace SpeedCubeTimer
                 grid.Children.Add(sps[i]);
                 Grid.SetRow(sps[i], 2);
                 Grid.SetColumn(sps[i], i + 1);
-                var btn = new Button() { Content = ar.Last().ToString(), FontSize = 14, Name = $"btn{index2}" };
+                var btn = new Button() { Content = ar.Last().ToString(), Name = $"btn{index2}", Style = (Style)Application.Current.FindResource("ButtonStyle")};
                 btn.Click += Btn_Click;
                 ar.RemoveAt(ar.Count - 1);
                 sps[i].Children.Add(btn);
@@ -92,7 +100,8 @@ namespace SpeedCubeTimer
                     {
                         Content = ar.Last().ToString(),
                         FontSize = 14,
-                        Name = $"btn{index2}"
+                        Name = $"btn{index2}",
+                        Style = (Style)Application.Current.FindResource("ButtonStyle")
                     };
                     sps[i2].Children.Add(btn);
                     btn.Click += Btn_Click;

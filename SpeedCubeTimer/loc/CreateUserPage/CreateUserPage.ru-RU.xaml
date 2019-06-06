@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="ResourceDictionaryName">Loc-ru-RU</s:String>
+    <s:String x:Key="title">Зарегистрироваться</s:String>
+    <s:String x:Key="login">Логин</s:String>
+    <s:String x:Key="password">Пароль</s:String>
+    <s:String x:Key="hints" xml:space="preserve">Ваш логин не должен содержать особые символы("\/@&amp;*$#@ и так далее).
+
+В пароле используйте только латинские большие и маленькие буквы, цифры.
+        
+Он должен содержать больше 8 символов и меньше 16.
+    </s:String>
+    <s:String x:Key="description">Привет. Напиши свои персональные данные ниже.</s:String>
+    <s:String x:Key="signup">Зарегистрироваться</s:String>
+</ResourceDictionary>

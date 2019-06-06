@@ -17,6 +17,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Runtime.CompilerServices;
+using SpeedCubeTimer.Model;
 
 namespace SpeedCubeTimer
 {
@@ -26,34 +27,51 @@ namespace SpeedCubeTimer
     public partial class MainWindowsPage : Page
     {
         MainWindow mw;
-        public MainWindowsPage(MainWindow mw)
+        User user = null;
+        SolvedSyncronizer ssync;
+        public MainWindowsPage(MainWindow mw, User user = null)
         {
             InitializeComponent();
             scramble.Text = scramble1.ToString();
+
+
+            if (user == null)
+            {
+                this.user = App.CurrentUser;
+            }
+            else this.user = user;
+            
             mw.Closing += MainWindow_Closing;
             this.mw = mw;
-
+            LocUtil.SwitchLanguage(this, App.Language.ToString());
+            LocUtil.LanguageChanged += LocUtil_LanguageChanged;
             
             mw.KeyDown += Window_KeyDown;
             mw.KeyUp += Window_KeyUp;
             ScrambleShow(scramble1);
             stoped = false;
-
+            ssync = new SolvedSyncronizer(0);
             var path = App.SolvedTimesTextDocPath;
             if (File.Exists(path))
             {
                 BinaryFormatter bf = new BinaryFormatter();
-                using (Stream str = new FileStream(path, FileMode.Open))
+                FileInfo fi = new FileInfo(path);
+                if (fi.Length > 0)
                 {
-                    Time.History = (List<Time>)bf.Deserialize(str);
+                    using (Stream str = new FileStream(path, FileMode.Open))
+                    {
+                        Time.History = (List<Time>)bf.Deserialize(str);
+                        ssync = new SolvedSyncronizer(Time.History.Count);
+                    }
+                    if (Time.History.Count > 0)
+                    {
+                        textblock1.Text = Time.History[Time.History.Count - 1].ToString(); sec2.IsEnabled = true; dnf.IsEnabled = true;
+                        // TODO: ASIGN SDNF AND SSEC BY CONDITION CONSTRUCTION, CHECKING WHETHER Time.History[Time.History.Count - 1].SOT has DNF or SEC
+                        sdnf = Time.History[Time.History.Count - 1].SOT == StateOfTime.DNF;
+                        ssec2 = Time.History[Time.History.Count - 1].SOT == StateOfTime.SEC2;
+                    };
+
                 }
-                if (Time.History.Count > 0)
-                {
-                    textblock1.Text = Time.History[Time.History.Count - 1].ToString(); sec2.IsEnabled = true; dnf.IsEnabled = true;
-                    // TODO: ASIGN SDNF AND SSEC BY CONDITION CONSTRUCTION, CHECKING WHETHER Time.History[Time.History.Count - 1].SOT has DNF or SEC
-                    sdnf = Time.History[Time.History.Count - 1].SOT == StateOfTime.DNF;
-                    ssec2 = Time.History[Time.History.Count - 1].SOT == StateOfTime.SEC;
-                };
 
             }
             Thread thr = new Thread(threadmethod);
@@ -62,7 +80,10 @@ namespace SpeedCubeTimer
             thr.Start();
         }
 
-
+        private void LocUtil_LanguageChanged(object sender, LocUtil.LanguageChangedEventArgs e)
+        {
+            LocUtil.SwitchLanguage(this, e.infivechars);
+        }
 
         CubingTimer Timer = null;
         Boolean sdnf = false;
@@ -86,7 +107,7 @@ namespace SpeedCubeTimer
                 else
                 {
                     dnf.Background = Brushes.Gray;
-                    Time.History[Time.History.Count - 1].SOT = StateOfTime.DEFAULT;
+                    Time.History[Time.History.Count - 1].SOT = StateOfTime.Default;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
                     GetEveryAverage();
                 }
@@ -103,14 +124,14 @@ namespace SpeedCubeTimer
                 ssec2 = value;
                 if (value == true)
                 {
-                    Time.History[Time.History.Count - 1].SOT = StateOfTime.SEC;
+                    Time.History[Time.History.Count - 1].SOT = StateOfTime.SEC2;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
                     sec2.Background = Brushes.LightBlue;
                     GetEveryAverage();
                 }
                 else
                 {
-                    Time.History[Time.History.Count - 1].SOT = StateOfTime.DEFAULT;
+                    Time.History[Time.History.Count - 1].SOT = StateOfTime.Default;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
                     sec2.Background = Brushes.Gray;
                     GetEveryAverage();
@@ -140,11 +161,15 @@ namespace SpeedCubeTimer
             }
             catch (ThreadAbortException)
             {
-                SerializeHistory();
+                
                 
             }
+            finally
+            {
+                SerializeHistory();
+            }
     }
-        private void SerializeHistory()
+        private async void SerializeHistory()
         {
             BinaryFormatter bf = new BinaryFormatter();
             var path = App.SolvedTimesTextDocPath;
@@ -152,6 +177,7 @@ namespace SpeedCubeTimer
             {
                 bf.Serialize(str, Time.History);
             }
+            ssync.Serialize(); // sends to db all the solved times, which are not already sent
         }
         private void ScrambleShow(Scramble scramble) // show it in grid1
         {
@@ -168,9 +194,16 @@ namespace SpeedCubeTimer
 
                     Canvas canvas = new Canvas();
                     canvas.Background = cs.S2.Elements[index].ConvertToBrush();
+                   
+                    Border border = new Border() { BorderThickness = new Thickness(3000), BorderBrush = Brushes.Black };
+                    Grid.SetRow(border, row);
+                    Grid.SetColumn(border, column);
+
                     grid1.Children.Add(canvas);
                     Grid.SetRow(canvas, row);
                     Grid.SetColumn(canvas, column);
+                    
+                    
                     column++;
                     index++;
                 }
@@ -186,9 +219,14 @@ namespace SpeedCubeTimer
                 {
                     Canvas canvas = new Canvas();
                     canvas.Background = cs.S1.Elements[index].ConvertToBrush();
+                    Border border = new Border() { BorderThickness = new Thickness(3), BorderBrush = Brushes.Black };
+                    Grid.SetRow(border, row);
+                    Grid.SetColumn(border, column);
+
                     grid1.Children.Add(canvas);
                     Grid.SetRow(canvas, row);
                     Grid.SetColumn(canvas, column);
+                    
                     column++;
                     index++;
                 }
@@ -204,9 +242,14 @@ namespace SpeedCubeTimer
                 {
                     Canvas canvas = new Canvas();
                     canvas.Background = cs.S6.Elements[index].ConvertToBrush();
+                    Border border = new Border() { BorderThickness = new Thickness(3), BorderBrush = Brushes.Black };
+                    Grid.SetRow(border, row);
+                    Grid.SetColumn(border, column);
+
                     grid1.Children.Add(canvas);
                     Grid.SetRow(canvas, row);
                     Grid.SetColumn(canvas, column);
+                    
                     column++;
                     index++;
                 }
@@ -222,9 +265,14 @@ namespace SpeedCubeTimer
                 {
                     Canvas canvas = new Canvas();
                     canvas.Background = cs.S5.Elements[index].ConvertToBrush();
+                    Border border = new Border() { BorderThickness = new Thickness(3), BorderBrush = Brushes.Black };
+                    Grid.SetRow(border, row);
+
+                    Grid.SetColumn(border, column);
                     grid1.Children.Add(canvas);
                     Grid.SetRow(canvas, row);
                     Grid.SetColumn(canvas, column);
+                    
                     column++;
                     index++;
                 }
@@ -240,9 +288,14 @@ namespace SpeedCubeTimer
                 {
                     Canvas canvas = new Canvas();
                     canvas.Background = cs.S3.Elements[index].ConvertToBrush();
+                    Border border = new Border() { BorderThickness = new Thickness(3), BorderBrush = Brushes.Black };
+                    Grid.SetRow(border, row);
+                    Grid.SetColumn(border, column);
+
                     grid1.Children.Add(canvas);
                     Grid.SetRow(canvas, row);
                     Grid.SetColumn(canvas, column);
+                   
                     column++;
                     index++;
                 }
@@ -258,9 +311,14 @@ namespace SpeedCubeTimer
                 {
                     Canvas canvas = new Canvas();
                     canvas.Background = cs.S4.Elements[index].ConvertToBrush();
+                    Border border = new Border() { BorderThickness = new Thickness(1), BorderBrush = Brushes.Black };
+                    Grid.SetRow(border, row);
+                    Grid.SetColumn(border, column);
+
                     grid1.Children.Add(canvas);
                     Grid.SetRow(canvas, row);
                     Grid.SetColumn(canvas, column);
+                    
                     column++;
                     index++;
                 }
@@ -273,7 +331,7 @@ namespace SpeedCubeTimer
             SerializeHistory();
         }
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private async void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (Timer != null)
             {
@@ -284,9 +342,10 @@ namespace SpeedCubeTimer
                     dnf.IsEnabled = true;
                     SDNF = false;
                     SSEC2 = false;
-                    GetEveryAverage();
+                    await GetEveryAverage();
                     stoped = true;
                     textblock1.Visibility = Visibility.Collapsed;
+                    textblock1.Text = Timer.LastTimeSolved.ToString();
                 }
                 else if (Timer.IsTimerWorking == false && task1 == null)
                 {
@@ -316,32 +375,34 @@ namespace SpeedCubeTimer
         }
         void InitializeCubingTimer()
         {
-            Timer = new CubingTimer();
+            Timer = new CubingTimer(user); // TODO: fix this
             Timer.Started += Timer_Started;
             Handlers.TimeChanged += CurrentTime_TimeChanged;
             Timer.TimerStoped += Timer_TimerStoped;
 
         }
-        void GetEveryAverage()
+        async Task GetEveryAverage()
         {
             textblock1.Text = Time.History[Time.History.Count - 1].ToString();
-            Time avg3 = GetAverage(3);
-            Time avg5 = GetAverage(5);
-            Time avg12 = GetAverage(12);
-            Time avg50 = GetAverage(50);
-            Time avg100 = GetAverage(100);
+            Time avg3 = await GetAverageAsync(3);
+            Time avg5 = await GetAverageAsync(5);
+            Time avg12 = await GetAverageAsync(12);
+            Time avg50 = await GetAverageAsync(50);
+            Time avg100 = await GetAverageAsync(100);
             // TODO: Output avgs on UI
             grid.Children.Remove(sp);
             Int32 index = 0;
             List<Int32> ii = new List<Int32>();
-            foreach (UIElement v in grid.Children)
-            {
-                if (v.GetType() == typeof(StackPanel))
+            
+                foreach (UIElement v in grid.Children)
                 {
-                    ii.Add(index);
+                    if (v.GetType() == typeof(StackPanel))
+                    {
+                        ii.Add(index);
+                    }
+                    index++;
                 }
-                index++;
-            }
+            
             foreach (int i in ii)
             {
                 grid.Children.RemoveAt(i);
@@ -352,13 +413,14 @@ namespace SpeedCubeTimer
             Grid.SetRowSpan(stp, 2);
             Grid.SetColumn(stp, 2);
             Grid.SetColumnSpan(stp, 2);
-            stp.Children.Add(new TextBlock() { Text = $"avg3 = {avg3}" });
-            stp.Children.Add(new TextBlock() { Text = $"avg5 = {avg5}" });
-            stp.Children.Add(new TextBlock() { Text = $"avg12 = {avg12}" });
-            stp.Children.Add(new TextBlock() { Text = $"avg50 = {avg50}" });
-            stp.Children.Add(new TextBlock() { Text = $"avg100 = {avg100}" });
+            Style simpletextstyle= (Style)App.Current.FindResource("SimpleText") ;
+            stp.Children.Add(new TextBlock() { Text = $"avg3 = {avg3}" ,Style = simpletextstyle});
+            stp.Children.Add(new TextBlock() { Text = $"avg5 = {avg5}" , Style = simpletextstyle });
+            stp.Children.Add(new TextBlock() { Text = $"avg12 = {avg12}", Style = simpletextstyle });
+            stp.Children.Add(new TextBlock() { Text = $"avg50 = {avg50}", Style = simpletextstyle });
+            stp.Children.Add(new TextBlock() { Text = $"avg100 = {avg100}", Style = simpletextstyle });
         }
-        static Time GetAverage(int count)
+        async static Task<Time> GetAverageAsync(int count)
         {
             try
             {
@@ -371,13 +433,14 @@ namespace SpeedCubeTimer
                 list.RemoveAt(list.Count - 1);
                 list.RemoveAt(0);
 
-                var g = Time.Average(list, count - 2);
-                g.SOT = isdnf ? StateOfTime.DNF : StateOfTime.DEFAULT;
+                var g = await Time.AverageAsync(list, count - 2);
+                g.SOT = isdnf ? StateOfTime.DNF : StateOfTime.Default;
                 return g;
             }
-            catch (ArgumentException)
+            catch (ArgumentException ae)
             {
-                return new Time(new Scramble());
+                return new Time(new Scramble(), new User());
+                
             }
         }
         private void Timer_TimerStoped(object sender, TimerStopedEventArgs e)
@@ -417,7 +480,15 @@ namespace SpeedCubeTimer
         }
         private void Timer_Started(object sender, TimerStartedEventArgs e)
         {
-            textblock1.Foreground = Brushes.Black;
+            var v = App.Current.Resources.MergedDictionaries.Single((res) => {
+                return res.Source.OriginalString.Contains("themes");
+            });
+            if (v.Source.OriginalString.Contains("White.xaml"))
+                textblock1.Foreground = Brushes.Black;
+
+            if (v.Source.OriginalString.Contains("Black.xaml"))
+                textblock1.Foreground = Brushes.White;
+            
             task1 = null;
         }
         private void RedGreen(KeyEventArgs e)
@@ -438,7 +509,15 @@ namespace SpeedCubeTimer
                 {
                     this.Dispatcher.Invoke(() =>
                     {
-                        textblock1.Foreground = Brushes.Black;
+                        var v = App.Current.Resources.MergedDictionaries.Single((res) => {
+                            return res.Source.OriginalString.Contains("themes");
+                        });
+                        if (v.Source.OriginalString.Contains("White.xaml"))
+                            textblock1.Foreground = Brushes.Black;
+
+                        if (v.Source.OriginalString.Contains("Black.xaml"))
+                            textblock1.Foreground = Brushes.White;
+
                     });
                 }
 
@@ -459,7 +538,13 @@ namespace SpeedCubeTimer
                     task1 = null;
                     this.Dispatcher.Invoke(() =>
                     {
-                        textblock1.Foreground = Brushes.Black;
+                              var v = App.Current.Resources.MergedDictionaries.Single((res) => {
+                            return res.Source.OriginalString.Contains("themes"); });
+                        if (v.Source.OriginalString.Contains("White.xaml"))
+                            textblock1.Foreground = Brushes.Black;
+
+                        if (v.Source.OriginalString.Contains("Black.xaml"))
+                            textblock1.Foreground = Brushes.White;
                     });
                 }
             }, ct);

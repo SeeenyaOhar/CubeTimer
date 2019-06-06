@@ -36,6 +36,14 @@ namespace TimerCode.Code
         {
             scrambleElements = new ScrambleElements[0];
         }
+        public Scramble(ScrambleElements[] elements)
+        {
+            if (elements.Length < 20)
+            {
+                throw new ArgumentException("Scramble is to be with at least 20 scramble elements.");
+            }
+            scrambleElements = elements;
+        }
         // <summary>
         // Only for empty object.
         // </summary>
@@ -60,6 +68,7 @@ namespace TimerCode.Code
         }
         public override string ToString()
         {
+            
             StringBuilder sb = new StringBuilder();
             foreach(var v in scrambleElements)
             {
@@ -68,6 +77,38 @@ namespace TimerCode.Code
             }
             return sb.ToString();
         }
+        public string ToString(Boolean tomysql)
+        {
+            if (tomysql)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var v in scrambleElements)
+                {
+                    String str = Replace(v);
+                    if (str.Contains('\''))
+                    {
+                        var ar = str.Split('\'');
+                        str = ar[0] + "\\" + '\'' + ar[1];
+                    }
+                    sb.Append(str);
+                    sb.Append(" ");
+                    
+                }
+                return sb.ToString();
+            }
+
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var v in scrambleElements)
+                {
+                    sb.Append(Replace(v));
+                    sb.Append(" ");
+                }
+                return sb.ToString();
+            }
+        }
+      
         private String Replace(ScrambleElements se)
         {
             if (se.ToString() == "R1")
@@ -95,6 +136,35 @@ namespace TimerCode.Code
                 return "F'";
             }
             return se.ToString();
+        }
+
+        public static ScrambleElements Replace(String str)
+        {
+            if (str == "R'")
+            {
+                return ScrambleElements.R1;
+            }
+            if (str == "L'")
+            {
+                return ScrambleElements.L1;
+            }
+            if (str == "D'")
+            {
+                return ScrambleElements.D1;
+            }
+            if (str == "U'")
+            {
+                return ScrambleElements.U1;
+            }
+            if (str == "B'")
+            {
+                return ScrambleElements.B1;
+            }
+            if (str == "F'")
+            {
+                return ScrambleElements.F1;
+            }
+            return (ScrambleElements) Enum.Parse(typeof(ScrambleElements), str);
         }
     }
     class RandomSE

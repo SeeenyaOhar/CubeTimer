@@ -9,7 +9,7 @@ namespace TimerCode.Code
 {
     public enum StateOfTime
     {
-        DEFAULT, SEC, DNF
+        Default, SEC2, DNF
     }
 
     public class CubingTimer
@@ -18,7 +18,18 @@ namespace TimerCode.Code
         private Task timertask = null;
         Scramble scramble;
         public Boolean IsTimerWorking { get; set; } = false; // thread safe property :)
-        public Time CurrentTime { get; private set; } = new Time(new Scramble());
+        private User user;
+
+        // <summary
+        // <param name="user">The user, who is going to solve a puzzle. </param>
+        // </summary>
+        public CubingTimer(User user)
+        {
+            this.user = user;
+            CurrentTime = new Time(new Scramble(), user);
+        }
+
+        public Time CurrentTime { get; private set; } 
         public event EventHandler<TimerStartedEventArgs> Started; // Started means that 2 seconds after CubingTimer.Start(string)
         public event EventHandler<TimerStopedEventArgs> TimerStoped;
 
@@ -26,23 +37,23 @@ namespace TimerCode.Code
         public void LoadScramble(Scramble scramble)
         {
             this.scramble = scramble;
-            CurrentTime = new Time(scramble);
+            CurrentTime = new Time(scramble, user); 
         }
         public void Start()
         {
-            
+
             if (Started != null)
-            Started(this, new TimerStartedEventArgs());
+                Started(this, new TimerStartedEventArgs());
             IsTimerWorking = true;
-            
-            timertask = 
+
+            timertask =
                 Task.Run(() =>
             {
                 while (IsTimerWorking)
                 {
-                    Thread.Sleep(8); // do not work truely
-                     CurrentTime.AddMiliseconds(10);
-                    
+                    Thread.Sleep(8); // do not work properly
+                    CurrentTime.AddMiliseconds(10);
+
                 }
             }
             );
@@ -53,7 +64,7 @@ namespace TimerCode.Code
             IsTimerWorking = false;
             
             LastTimeSolved = CurrentTime;
-            CurrentTime = new Time(scramble);
+            CurrentTime = new Time(scramble, user);
             LastTimeSolved.AddToHistoryThis();
             if (TimerStoped != null) TimerStoped(this, new TimerStopedEventArgs(CurrentTime));
         }
@@ -72,15 +83,15 @@ namespace TimerCode.Code
     [Serializable] 
     public class Time
     {
-        private StateOfTime sot = StateOfTime.DEFAULT;
+        private StateOfTime sot = StateOfTime.Default;
         public StateOfTime SOT { get { return sot; } set
             {
-                if (value == StateOfTime.SEC & sot != StateOfTime.SEC)
+                if (value == StateOfTime.SEC2 & sot != StateOfTime.SEC2)
                 {
                     Seconds += 2;
                     sot = value;
                 }
-                if (sot == StateOfTime.SEC & value == StateOfTime.DEFAULT)
+                if (sot == StateOfTime.SEC2 & value == StateOfTime.Default)
                 {
                     Seconds -= 2;
                     sot = value;
@@ -89,8 +100,10 @@ namespace TimerCode.Code
             }
         } 
         public static List<Time> History = new List<Time>();
-        Scramble scramble;
+        public User UserSolved { get; private set; }
+        public Scramble scramble { get; private set; }
         public String Scramble { get; private set; }
+        public Scramble ScrambleScramble { get; private set; }
         private short _hours = 0;
         private short _minutes = 0;
         private short _seconds = 0;
@@ -128,14 +141,16 @@ namespace TimerCode.Code
                     _miliseconds = 0;
                 }
             } }
-        public Time(short hours, short minutes, short seconds, int miliseconds, Scramble scramble)
+        public Time(short hours, short minutes, short seconds, int miliseconds, Scramble scramble, User usersolved)
         {
             this.Hours = hours;
             this.Minutes = minutes;
             this.Seconds = seconds;
             this.Miliseconds = miliseconds;
             this.scramble = scramble;
+            
             Scramble = this.scramble.ToString();
+            UserSolved = usersolved;
             //MessageBox.Show(Scramble);
         }
         public void AddMiliseconds(short miliseconds)
@@ -163,9 +178,10 @@ namespace TimerCode.Code
             
         }
        
-        public Time(Scramble scramble)
+        public Time(Scramble scramble, User usersolved)
         {
             this.scramble = scramble;
+            UserSolved = usersolved;
             Scramble = this.scramble.ToString();
             
         }
@@ -189,7 +205,7 @@ namespace TimerCode.Code
                     return str;
                 }
             }
-            if (sot == StateOfTime.SEC)
+            if (sot == StateOfTime.SEC2)
             {
                 if (Hours == 0 & Minutes != 0)
                 {
@@ -213,21 +229,25 @@ namespace TimerCode.Code
         }
         
         
-        public static Time Average(List<Time> ar, int countofaverage)
+
+        public static async Task<Time> AverageAsync(List<Time> ar, int countofaverage)
         {
             List<Time> newar = new List<Time>();
             ar.Reverse();
             if (ar.Count >= countofaverage)
             {
                 Boolean isdnf = false;
-                for (Int32 i = 0; i < countofaverage; i++)
+                await Task.Run(() =>
                 {
-                    if (ar[i].SOT == StateOfTime.DNF)
+                    for (Int32 i = 0; i < countofaverage; i++)
                     {
-                        isdnf = true;
+                        if (ar[i].SOT == StateOfTime.DNF)
+                        {
+                            isdnf = true;
+                        }
+                        newar.Add(ar[i]);
                     }
-                    newar.Add(ar[i]);
-                }
+                });
                 Time sum = Add(newar);
                 
                 return Division(sum, countofaverage, isdnf);
@@ -238,7 +258,7 @@ namespace TimerCode.Code
 
         private static Time Add(List<Time> ar)
         {
-            Time sum = new Time(new Scramble());
+            Time sum = new Time(new Scramble(), new User());// TODO: check whether we need User() or User("args")
             foreach (var v in ar)
             {
                 sum.Hours += v.Hours;
@@ -264,7 +284,8 @@ namespace TimerCode.Code
             short seconds = GetNumberDown(ml, out secondsaftdp);
             ml = secondsaftdp * 1000;
             int miliseconds = (int)GetNumberDown(ml, out ml);
-            var division = new Time(hours, minutes, seconds, miliseconds, new Scramble());
+            // check whether we need "new User()" or "User("args")"
+            var division = new Time(hours, minutes, seconds, miliseconds, new Scramble(), new User()); 
             if (IsDNF)
             {
                 division.SOT = StateOfTime.DNF;
@@ -292,11 +313,7 @@ namespace TimerCode.Code
     {
         public static void TimeChangedInvoke()
         {
-            if (TimeChanged != null)
-            {
-                TimeChanged(new object(), new TimeChangedEventArgs());
-            }
-           
+            TimeChanged?.Invoke(new object(), new TimeChangedEventArgs());
         }
         public static event EventHandler<TimeChangedEventArgs> TimeChanged;
     }

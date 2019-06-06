@@ -16,7 +16,7 @@ namespace ConsoleTimer
         {
             Scramble scramble = new Scramble();
             Console.WriteLine(scramble.ToString());
-            Timer = new CubingTimer();
+            //Timer = new CubingTimer(new User(1, "name", "lname")); // TODO: Fix to the current user
             Timer.LoadScramble(scramble);
             Timer.Started += Timer_Started;
             Handlers.TimeChanged += CurrentTime_TimeChanged;

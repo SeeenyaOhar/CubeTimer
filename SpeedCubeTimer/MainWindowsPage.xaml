@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:SpeedCubeTimer"
       mc:Ignorable="d" 
       
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainWindowsPage" >
+      d:DesignHeight="450" d:DesignWidth="850"
+      Title="MainWindowsPage" Background="Transparent" >
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,15 +15,14 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    <Grid x:Name="grid">
+    <Grid x:Name="grid" Background="Transparent">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="56*"/>
-            <ColumnDefinition Width="187*"/>
-            <ColumnDefinition Width="31*"/>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="127*"/>
-            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="235*"/>
+            <ColumnDefinition Width="215*"/>
+            <ColumnDefinition Width="215*"/>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="54*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
@@ -32,18 +31,25 @@
             <RowDefinition Height="43*"/>
             <RowDefinition Height="111*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="textblock1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="0" 
-                   VerticalAlignment="Center" Grid.Row="2" 
-                   FontSize="50"  Grid.Column="3" Grid.ColumnSpan="2"/>
-        <Button x:Name="settings_b" Grid.Row="0" Grid.Column="6" Click="settings_b_Click"
-                FontSize="20" Content="{DynamicResource ResourceKey=settings_but}"/>
-        <Button x:Name="history_b" Grid.Row="0" Grid.Column="0" Content="{DynamicResource ResourceKey=history_but}" FontSize="20" Click="history_b_Click" />
-        <TextBlock x:Name="scramble" FontSize="14" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"   Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="avgs" FontSize="10" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2"/>
-        <StackPanel x:Name="sp" Grid.Row="1" Grid.RowSpan="2" Grid.Column="5"/>
-        <Button x:Name="sec2" Grid.Column="3" Grid.Row="3" Content="+ 2 SEC" Click="sec2_Click" IsEnabled="False" Background="Gray" />
-        <Button x:Name="dnf" Grid.Column="4" Grid.Row="3" Content="DNF" Click="dnf_Click" IsEnabled="False" Background="Gray"/>
-        <Grid x:Name="grid1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2" Background="Black">
+        <TextBlock x:Name="textblock1" Style="{StaticResource TitleText}" 
+                   HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="0" 
+                   VerticalAlignment="Stretch" Grid.Row="2" TextAlignment="Center"
+                   FontSize="50"  Grid.Column="2" Grid.ColumnSpan="2"/>
+       
+       
+        <TextBlock x:Name="scramble" FontSize="14" Grid.Row="0" 
+                   Grid.Column="0" HorizontalAlignment="Center"
+                   Style="{StaticResource WhiteSimpleText}"  Panel.ZIndex="2"
+                   VerticalAlignment="Center" Grid.ColumnSpan="6"
+                   TextAlignment="Center"/>
+        <TextBlock x:Name="avgs" FontSize="10" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="sp" Grid.Row="1" Grid.RowSpan="2" Grid.Column="4"/>
+        <Button Style="{StaticResource ButtonStyle}" x:Name="sec2" Grid.Column="2" 
+                Grid.Row="3" Content="+ 2 SEC" Click="sec2_Click" IsEnabled="False" 
+                Background="Gray" />
+        <Button Style="{StaticResource ButtonStyle}" x:Name="dnf" Grid.Column="3" Grid.Row="3" 
+                Content="DNF" Click="dnf_Click" IsEnabled="False" Background="Gray"/>
+        <Grid x:Name="grid1" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
 
                 <ColumnDefinition Width="15"/>
@@ -80,6 +86,25 @@
                 <RowDefinition Height="15"/>
                 <RowDefinition Height="15"/>
             </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
+            <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BorderScramble}"/>
+            <Border Grid.Row="5" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
+            <Border Grid.Row="5" Grid.Column="9" Style="{StaticResource BorderScramble}"/>
+            <Border Grid.Row="5" Grid.Column="13" Style="{StaticResource BorderScramble}"/>
+            <Border Grid.Row="9" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
         </Grid>
+        <Canvas Background="{StaticResource ForegroundColor}" HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                 Grid.ColumnSpan="6" Panel.ZIndex="1"/>
+        <StackPanel Grid.Row="1" Grid.RowSpan="5">
+            <Button Style="{StaticResource ButtonStyle}" x:Name="history_b" 
+                 Content="{DynamicResource ResourceKey=history_but}" 
+                FontSize="20" Click="history_b_Click" Panel.ZIndex="1"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="settings_b" 
+                 Click="settings_b_Click"
+                FontSize="20" Content="{DynamicResource ResourceKey=settings_but}"
+                Panel.ZIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </StackPanel>
     </Grid>
 </Page>

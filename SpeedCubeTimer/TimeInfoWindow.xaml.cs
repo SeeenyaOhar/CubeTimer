@@ -101,11 +101,21 @@ namespace SpeedCubeTimer
         public TimeInfoWindow(Time tme)
         {
             InitializeComponent();
+            LocUtil.SwitchLanguageWithCallOut(this, App.Language.ToString());
+            LocUtil.LanguageChanged += LocUtil_LanguageChanged;
             title.Text = $"{this.Resources.MergedDictionaries[0]["info_text"]} - {tme.ToString()}";
+            
             var scramble = tme.Scramble;
             ScrambleShow(scramble.ToScramble());
             scr_tb.Text = scramble;
             
+        }
+        private void LocUtil_LanguageChanged(object sender, LocUtil.LanguageChangedEventArgs e)
+        {
+
+            LocUtil.SwitchLanguage(this, e.infivechars);
+            
+
         }
         private void ScrambleShow(Scramble scramble) // show it in grid1
         {
