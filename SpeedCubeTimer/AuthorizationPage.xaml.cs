@@ -35,7 +35,7 @@ namespace SpeedCubeTimer
         Char[] prohibited = new char[] { '/', '\\', '@', '$', '%', '&' };
         
         public event PropertyChangedEventHandler PropertyChanged;
-        string message;
+        string message = "";
         public String Message
         {
             get
@@ -50,28 +50,30 @@ namespace SpeedCubeTimer
         }
         private void NotifyPropertyChanged(string nameofproperty)
         {
-            PropertyChanged?.Invoke(new object(), new PropertyChangedEventArgs(nameofproperty));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameofproperty));
         }
-        private void Save_b_Click(object sender, RoutedEventArgs e)
+        private async void Save_b_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Implement method: create a TimerCode.Code.user,
             // NAVIGATE TO MAINWINDOWPAGE
            
-            var returned = DBControl.GetUser(login_tb.Text, password_tb.Password);
+            var returned = await DBControl.GetUserAsync(login_tb.Text, password_tb.Password);
             bool exist = returned.Item2;
             if (exist)
             {
                 User user = null;
                 user = returned.Item1;
+                App.CurrentUser = user;
+                App.UserPassword = user.Password.SecureStringToPassword();
                 window.Hide();
-                MainWindow mw = new MainWindow(user); // check it out
                 App.Serialize();
+                MainWindow mw = new MainWindow(); // check it out
                 mw.ShowDialog();
                 window.Close();
             }
             else
             {
-                MessageBox.Show("You have a mistake in login or password. Please check it and try again.");
+                Message = "You have a mistake in login or password. Please check it and try again.";
                 return;
             }
            
@@ -87,10 +89,15 @@ namespace SpeedCubeTimer
             foreach(var chr in prohibited)
             {
                 if (login_tb.Text.Contains(chr) || password_tb.Password.Contains(chr))
-                    Message = "Your password contains one of the following characters \"/ \\ /@,%,$,%,&\"";
-                save_b.IsEnabled = false;
-                return;
+                {
+                    Message = "Your password or username contains one of the following characters \"/ \\ /@,%,$,%,&,/;,\" ...\"";
+                    save_b.IsEnabled = false;
+                    return;
+                }
+                   
+                
             }
+            Message = "";
             if (password_tb.Password != "")
             {
                 save_b.IsEnabled = true;
@@ -109,10 +116,15 @@ namespace SpeedCubeTimer
             {
                 
                 if (password_tb.Password.Contains(chr) || login_tb.Text.Contains(chr))
-                    Message = "Your password contains one of the following characters \"/ \\ /@,%,$,%,&\"";
-                save_b.IsEnabled = false;
-                return;
+                {
+                    Message = "Your password or username contains one of the following characters \"/ \\ /@,%,$,%,&,/;,\" ...\"";
+                    save_b.IsEnabled = false;
+                    return;
+                }
+                   
+                
             }
+            Message = "";
             if (login_tb.Text != "")
             {
                 save_b.IsEnabled = true;
@@ -122,7 +134,7 @@ namespace SpeedCubeTimer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            window.Content = new CreateUserPage(window);
+            window.Content = new CreateUserPage(window, this);
         }
         private void LocUtil_LanguageChanged(object sender, LocUtil.LanguageChangedEventArgs e)
         {

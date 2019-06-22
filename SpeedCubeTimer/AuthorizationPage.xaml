@@ -40,13 +40,15 @@
         <TextBlock Text="{DynamicResource title}" Grid.Column="1" Grid.ColumnSpan="2"
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    Foreground="{StaticResource SpaceBackground}"
-                   FontSize="25"/>
+                   FontSize="23"/>
         <TextBox x:Name="login_tb" Grid.Row="3" Grid.Column="2" TextChanged="Login_tb_TextChanged"/>
         <PasswordBox x:Name="password_tb" Grid.Row="4" Grid.Column="2" PasswordChanged="Password_tb_TextChanged"/>
         <TextBlock Text="{DynamicResource Login}" Grid.Column="1" Grid.Row="3"
                    VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <TextBlock Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Text="{Binding Path=Message, 
-            UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center" FontSize="16" Foreground="Red"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" TextAlignment="Center" 
+                   Grid.ColumnSpan="2" Text="{Binding Path=Message, 
+            UpdateSourceTrigger=PropertyChanged}" FontSize="15" Foreground="Red"
+                   TextWrapping="Wrap"/>
         <TextBlock Text="{DynamicResource Password}" Grid.Column="1" Grid.Row="4"
                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <Button Content="{DynamicResource signup}" Grid.Column="1" Grid.Row="7"

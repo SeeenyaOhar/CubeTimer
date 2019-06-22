@@ -22,7 +22,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("loc/timeinfowindow/timeinfowindow.ru-ru.xaml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("loc/languagechange/languagechange.ru-ru.xaml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("loc/authorizationpage/authorizationpage.en-us.xaml")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("loc/authorizationpage/authorizationpage.ru-ru..xaml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("loc/authorizationpage/authorizationpage.ru-ru.xaml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("loc/createuserpage/createuserpage.en-us.xaml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("loc/createuserpage/createuserpage.ru-ru.xaml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("themes/black.xaml")]

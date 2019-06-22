@@ -174,8 +174,10 @@ namespace SpeedCubeTimer
             back_sett.Click += Back_sett_Click;
             lang_page.grid.Children.Add(back_sett); // adding to page's grid button
             Grid.SetRow(back_sett, 2);
+            mw.Hide();
             mw.Height = lang_page.Height + 40;
             mw.Width = lang_page.Width + 40;
+            mw.Show();
             mw.Content = lang_page;
         }
 

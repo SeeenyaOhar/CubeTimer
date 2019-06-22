@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using SpeedCubeTimer.Model;
 namespace SpeedCubeTimer
 {
     /// <summary>
@@ -23,7 +24,6 @@ namespace SpeedCubeTimer
         public HelloWindow()
         {
             InitializeComponent();
-            
             InnerPages.Add(this);
             TimerAsync();
             LocUtil.LanguageChanged += LocUtil_LanguageChanged;

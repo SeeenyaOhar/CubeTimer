@@ -106,6 +106,6 @@ C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\obj\Debug\Cr
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\System.ValueTuple.dll
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\System.ValueTuple.xml
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\AuthorizationPage\AuthorizationPage.en-US.xaml
-C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\AuthorizationPage\AuthorizationPage.ru-RU..xaml
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\CreateUserPage\CreateUserPage.en-US.xaml
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\CreateUserPage\CreateUserPage.ru-RU.xaml
+C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\SpeedCubeTimer\bin\Debug\loc\AuthorizationPage\AuthorizationPage.ru-RU.xaml

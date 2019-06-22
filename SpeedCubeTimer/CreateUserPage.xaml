@@ -32,6 +32,8 @@
             <RowDefinition Height="130*"/>
         </Grid.RowDefinitions>
         <!--Implement here page-->
+        <Button x:Name="back" Content="Back" Panel.ZIndex="2" Style="{StaticResource ButtonStyle}" 
+                FontSize="16" Click="Back_Click"/>
         <TextBlock Text="{DynamicResource title}" Grid.ColumnSpan="5"
                    FontSize="20" TextAlignment="Center"
                    VerticalAlignment="Center" Panel.ZIndex="2"
@@ -54,7 +56,7 @@
                    Grid.RowSpan="4" Text="{DynamicResource hints}"
                    IsHyphenationEnabled="True" TextWrapping="Wrap"
                    Foreground="Green" Style="{StaticResource SimpleText}"
-                   HorizontalAlignment="Right"/>
+                   HorizontalAlignment="Right" />
         <TextBlock x:Name="descr" Text="{DynamicResource description}"
                    Grid.Row="1" Grid.ColumnSpan="5" FontSize="14"
                    Style="{StaticResource SimpleText}"
@@ -68,7 +70,8 @@
                 Grid.Row="3" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
         <Button x:Name="save_b" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
                 Content="{DynamicResource signup}" Click="Save_b_Click"/>
-        <TextBlock Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.RowSpan="2"
-                   TextAlignment="Center" FontSize="14" Foreground="Red" TextWrapping="Wrap"/>
+        <TextBlock Text="{Binding Path=Message, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" 
+                   Grid.RowSpan="2" TextWrapping="Wrap"
+                   TextAlignment="Center" FontSize="14" Foreground="Red"/>
     </Grid>
 </Page>

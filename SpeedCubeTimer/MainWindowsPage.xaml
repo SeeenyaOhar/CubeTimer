@@ -96,15 +96,15 @@
         <Canvas Background="{StaticResource ForegroundColor}" HorizontalAlignment="Stretch" 
                 VerticalAlignment="Stretch" 
                  Grid.ColumnSpan="6" Panel.ZIndex="1"/>
-        <StackPanel Grid.Row="1" Grid.RowSpan="5">
+        <StackPanel Grid.Row="1" Grid.RowSpan="5" Panel.ZIndex="1">
             <Button Style="{StaticResource ButtonStyle}" x:Name="history_b" 
                  Content="{DynamicResource ResourceKey=history_but}" 
-                FontSize="20" Click="history_b_Click" Panel.ZIndex="1"
+                FontSize="20" Click="history_b_Click"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <Button Style="{StaticResource ButtonStyle}" x:Name="settings_b" 
                  Click="settings_b_Click"
                 FontSize="20" Content="{DynamicResource ResourceKey=settings_but}"
-                Panel.ZIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </StackPanel>
     </Grid>
 </Page>

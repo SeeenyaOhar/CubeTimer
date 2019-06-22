@@ -47,6 +47,117 @@ namespace SpeedCubeTimer.Model
             }
             return (user, true);
         }
+        public static async Task<(User, bool)> GetUserAsync(String username, String password)
+        {
+            String connectionstring = App.MySqlConStr;
+
+            // empty user
+            // used internalsvisibleto attribute
+            User user = new User();
+            // getting connection and getting reader out of the query
+            using (var connection = new MySqlConnection(connectionstring))
+            {
+                // here goes query
+                var command = new MySqlCommand($"CALL GetUser('{username}', '{password}', '{GetLocalIPAddress()}');", connection);
+                connection.Open();
+                return await Task.Run<(User,bool)>(() =>
+                {
+                    var reader = command.ExecuteReader();
+                    int read = 0;
+                    // reading properties one by one
+                    while (reader.Read())
+                    {
+
+                        read++;
+                        user.id = reader.GetInt32(0);
+                        user.Username = reader.GetString(1);
+                        user.Password = reader.GetString(2).ToSecureString();
+                        user.name = reader.GetString(3);
+                        user.lname = reader.GetString(4);
+                    }
+                    if (read == 0)
+                    {
+                        return (null, false);
+                    }
+                    return (user, true);
+                });
+                // last user in the database query is returned
+            }
+            
+        }
+        public static Boolean CheckExistance(String username)
+        {
+            String connectionstring = App.MySqlConStr;
+
+            // empty user
+            // used internalsvisibleto attribute
+            User user = new User();
+            // getting connection and getting reader out of the query
+            using (var connection = new MySqlConnection(connectionstring))
+            {
+                // here goes query
+                var command = new MySqlCommand($"CALL CheckExistance('{username}');", connection);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                int read = 0;
+                // reading properties one by one
+                while (reader.Read())
+                {
+
+                    read++;
+
+
+                    if (!reader.IsDBNull(0) && reader.GetInt32(0) != 0)
+                    {
+                        return true;
+                    }
+                    else return false;
+                    
+                  
+                }
+                if (read == 0) return false;
+                // last user in the database query is returned
+            }
+            return false;
+        }
+        public static async Task<Boolean> CheckExistanceAsync(String username)
+        {
+            String connectionstring = App.MySqlConStr;
+
+            // empty user
+            // used internalsvisibleto attribute
+            User user = new User();
+            // getting connection and getting reader out of the query
+            return await Task.Run<bool>(()=>
+            {
+                using (var connection = new MySqlConnection(connectionstring))
+                {
+                    // here goes query
+                    var command = new MySqlCommand($"CALL CheckExistance('{username}');", connection);
+                    connection.Open();
+                    var reader = command.ExecuteReader();
+                    int read = 0;
+                    // reading properties one by one
+                    while (reader.Read())
+                    {
+
+                        read++;
+
+
+                        if (!reader.IsDBNull(0) && reader.GetInt32(0) != 0)
+                        {
+                            return true;
+                        }
+                        else return false;
+
+
+                    }
+                    if (read == 0) return false;
+                    // last user in the database query is returned
+                }
+                return false;
+            });
+        }
         public static Boolean InsertSolved(Time solved)
         {
 

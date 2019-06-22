@@ -74,6 +74,8 @@ namespace SpeedCubeTimer
                 }
 
             }
+           
+
             Thread thr = new Thread(threadmethod);
             thr.IsBackground = true;
             thr.Priority = ThreadPriority.AboveNormal;
@@ -344,8 +346,8 @@ namespace SpeedCubeTimer
                     SSEC2 = false;
                     await GetEveryAverage();
                     stoped = true;
-                    textblock1.Visibility = Visibility.Collapsed;
                     textblock1.Text = Timer.LastTimeSolved.ToString();
+                    Focus();
                 }
                 else if (Timer.IsTimerWorking == false && task1 == null)
                 {
@@ -354,7 +356,6 @@ namespace SpeedCubeTimer
                     dnf.IsEnabled = false;
                     InitializeCubingTimer();
                     Timer.LoadScramble(scramble1);
-
                     RedGreen(e);
                     return;
                 }
@@ -378,7 +379,7 @@ namespace SpeedCubeTimer
             Timer = new CubingTimer(user); // TODO: fix this
             Timer.Started += Timer_Started;
             Handlers.TimeChanged += CurrentTime_TimeChanged;
-            Timer.TimerStoped += Timer_TimerStoped;
+            
 
         }
         async Task GetEveryAverage()
@@ -443,10 +444,6 @@ namespace SpeedCubeTimer
                 
             }
         }
-        private void Timer_TimerStoped(object sender, TimerStopedEventArgs e)
-        {
-
-        }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
@@ -462,15 +459,12 @@ namespace SpeedCubeTimer
                     ScrambleShow(scramble1);
                     return;
                 }
-
             }
             if (stoped == true)
             {
                 textblock1.Text = Time.History[Time.History.Count - 1].ToString();
                 textblock1.Visibility = Visibility.Visible;
             }
-
-
         }
         private void CurrentTime_TimeChanged(object sender, TimeChangedEventArgs e)
         {
@@ -501,7 +495,6 @@ namespace SpeedCubeTimer
             {
                 try
                 {
-
                     this.Dispatcher.Invoke(() => { textblock1.Foreground = Brushes.Red; });
                     ct.ThrowIfCancellationRequested();
                 }
@@ -531,7 +524,8 @@ namespace SpeedCubeTimer
                     ct.ThrowIfCancellationRequested();
                     Thread.Sleep(200);
                     ct.ThrowIfCancellationRequested();
-                    this.Dispatcher.Invoke(() => { textblock1.Foreground = Brushes.LightGreen; CanTimerStart = true; });
+                    this.Dispatcher.Invoke(() => { textblock1.Foreground = Brushes.LightGreen;
+                        CanTimerStart = true; });
                 }
                 catch (OperationCanceledException)
                 {
@@ -556,7 +550,7 @@ namespace SpeedCubeTimer
             mw.KeyDown -= Window_KeyDown;
             mw.KeyUp -= Window_KeyUp;
             mw.Content = new SettingsP(mw);
-            mw.Content = new SettingsP(mw);
+           
         }
 
         private void history_b_Click(object sender, RoutedEventArgs e)
@@ -569,22 +563,14 @@ namespace SpeedCubeTimer
             if (Time.History.Count > 0)
             {
                 SDNF = Swap(sdnf);
-
-
             }
-
-
         }
 
         private void sec2_Click(object sender, RoutedEventArgs e)
         {
             if (Time.History.Count > 0)
             {
-
                 SSEC2 = Swap(ssec2);
-
-
-
             }
         }
         private Boolean Swap(Boolean bl)
