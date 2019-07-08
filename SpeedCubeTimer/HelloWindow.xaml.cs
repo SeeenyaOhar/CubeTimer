@@ -80,10 +80,9 @@ namespace SpeedCubeTimer
             Button button = new Button()
             {
                 Style = (Style)App.Current.FindResource("ButtonStyle"),
-                Content = page.Resources.MergedDictionaries.Single(
-                    (res) => res.Source.OriginalString.Contains("-") 
-                    && res.Source.OriginalString.Contains("LanguageChange"))["next"]
+                
             };
+            button.SetResourceReference(ContentControl.ContentProperty, "next");
             button.Click += Button_Click;
             page.grid.Children.Add(button);
             Grid.SetColumn(button, 2);

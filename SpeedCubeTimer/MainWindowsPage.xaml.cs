@@ -28,7 +28,7 @@ namespace SpeedCubeTimer
     {
         MainWindow mw;
         User user = null;
-        SolvedSyncronizer ssync;
+        //SolvedSyncronizer ssync;
         public MainWindowsPage(MainWindow mw, User user = null)
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace SpeedCubeTimer
             mw.KeyUp += Window_KeyUp;
             ScrambleShow(scramble1);
             stoped = false;
-            ssync = new SolvedSyncronizer(0);
+            //ssync = new SolvedSyncronizer(0);
             var path = App.SolvedTimesTextDocPath;
             if (File.Exists(path))
             {
@@ -61,7 +61,7 @@ namespace SpeedCubeTimer
                     using (Stream str = new FileStream(path, FileMode.Open))
                     {
                         Time.History = (List<Time>)bf.Deserialize(str);
-                        ssync = new SolvedSyncronizer(Time.History.Count);
+                        //ssync = new SolvedSyncronizer(Time.History.Count);
                     }
                     if (Time.History.Count > 0)
                     {
@@ -129,17 +129,23 @@ namespace SpeedCubeTimer
                     Time.History[Time.History.Count - 1].SOT = StateOfTime.SEC2;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
                     sec2.Background = Brushes.LightBlue;
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                     GetEveryAverage();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+                    
                 }
                 else
                 {
                     Time.History[Time.History.Count - 1].SOT = StateOfTime.Default;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
                     sec2.Background = Brushes.Gray;
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                     GetEveryAverage();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 }
             }
         }
+       
         Task task1 = null;// this task change color of textblock1
         Boolean CanTimerStart = true;
         Scramble scramble1 = new Scramble();
@@ -179,7 +185,7 @@ namespace SpeedCubeTimer
             {
                 bf.Serialize(str, Time.History);
             }
-            ssync.Serialize(); // sends to db all the solved times, which are not already sent
+            //ssync.Serialize(); // sends to db all the solved times, which are not already sent
         }
         private void ScrambleShow(Scramble scramble) // show it in grid1
         {

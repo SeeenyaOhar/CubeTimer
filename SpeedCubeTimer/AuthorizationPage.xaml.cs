@@ -52,30 +52,31 @@ namespace SpeedCubeTimer
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameofproperty));
         }
-        private async void Save_b_Click(object sender, RoutedEventArgs e)
+        private void Save_b_Click(object sender, RoutedEventArgs e)
         {
+            throw new NotImplementedException();
             // TODO: Implement method: create a TimerCode.Code.user,
             // NAVIGATE TO MAINWINDOWPAGE
            
-            var returned = await DBControl.GetUserAsync(login_tb.Text, password_tb.Password);
-            bool exist = returned.Item2;
-            if (exist)
-            {
-                User user = null;
-                user = returned.Item1;
-                App.CurrentUser = user;
-                App.UserPassword = user.Password.SecureStringToPassword();
-                window.Hide();
-                App.Serialize();
-                MainWindow mw = new MainWindow(); // check it out
-                mw.ShowDialog();
-                window.Close();
-            }
-            else
-            {
-                Message = "You have a mistake in login or password. Please check it and try again.";
-                return;
-            }
+            //var returned = await DBControl.GetUserAsync(login_tb.Text, password_tb.Password);
+            //bool exist = returned.Item2;
+            //if (exist)
+            //{
+            //    User user = null;
+            //    user = returned.Item1;
+            //    App.CurrentUser = user;
+            //    App.UserPassword = user.Password.SecureStringToPassword();
+            //    window.Hide();
+            //    App.Serialize();
+            //    MainWindow mw = new MainWindow(); // check it out
+            //    mw.ShowDialog();
+            //    window.Close();
+            //}
+            //else
+            //{
+            //    Message = "You have a mistake in login or password. Please check it and try again.";
+            //    return;
+            //}
            
         }
 

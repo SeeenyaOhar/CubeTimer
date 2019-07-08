@@ -59,54 +59,54 @@ namespace SpeedCubeTimer
         private async void Save_b_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Implement here method for registration
-            User user = new User(0, login_tb.Text, password_tb.SecurePassword, "", "");
-            // id = 0, because there is autoincrement func
-            save_b.IsEnabled = false;
-            back.IsEnabled = false;
-            Task<Boolean> task = DBControl.CheckExistanceAsync(login_tb.Text);
-            CancellationTokenSource tokenSource = new CancellationTokenSource();
-            var token = tokenSource.Token;
-            Task sign_in_t = Task.Run(() =>
-            {
-                while (!task.IsCanceled || !task.IsCompleted || !task.IsFaulted || 
-                !token.IsCancellationRequested)
-                {
-                    Message = "Signing in."; Task.Delay(6000);
-                    Message = "Signing in.."; Task.Delay(6000);
-                    Message = "Signing in..."; Task.Delay(6000);
-                    token.ThrowIfCancellationRequested();
-                }
-            }, token); // NO MISTAKE HERE
-            if (await task.
-                ContinueWith((res) => // continue the task with unlocking some button for the user
-                {
-                    save_b.IsEnabled = true;
-                    back.IsEnabled = true;
-                    tokenSource.Cancel();
-                    return res.Result; // returning result to continue the if statement
-                },TaskScheduler.FromCurrentSynchronizationContext())) // if user exists, then notify the user about it
-            {
-                tokenSource.Cancel();
-                try { sign_in_t.Wait(); } catch (AggregateException) {
-                    // NOTHING HERE, JUST TO WHITE AN EXCEPTION 
-                }
+            //User user = new User(0, login_tb.Text, password_tb.SecurePassword, "", "");
+            //// id = 0, because there is autoincrement func
+            //save_b.IsEnabled = false;
+            //back.IsEnabled = false;
+            //Task<Boolean> task = DBControl.CheckExistanceAsync(login_tb.Text);
+            //CancellationTokenSource tokenSource = new CancellationTokenSource();
+            //var token = tokenSource.Token;
+            //Task sign_in_t = Task.Run(() =>
+            //{
+            //    while (!task.IsCanceled || !task.IsCompleted || !task.IsFaulted || 
+            //    !token.IsCancellationRequested)
+            //    {
+            //        Message = "Signing in."; Task.Delay(6000);
+            //        Message = "Signing in.."; Task.Delay(6000);
+            //        Message = "Signing in..."; Task.Delay(6000);
+            //        token.ThrowIfCancellationRequested();
+            //    }
+            //}, token); // NO MISTAKE HERE
+            //if (await task.
+            //    ContinueWith((res) => // continue the task with unlocking some button for the user
+            //    {
+            //        save_b.IsEnabled = true;
+            //        back.IsEnabled = true;
+            //        tokenSource.Cancel();
+            //        return res.Result; // returning result to continue the if statement
+            //    },TaskScheduler.FromCurrentSynchronizationContext())) // if user exists, then notify the user about it
+            //{
+            //    tokenSource.Cancel();
+            //    try { sign_in_t.Wait(); } catch (AggregateException) {
+            //        // NOTHING HERE, JUST TO WHITE AN EXCEPTION 
+            //    }
                 
-                Message = "User exists. Change your username."; // TODO: Make the password recovery
+            //    Message = "User exists. Change your username."; // TODO: Make the password recovery
                 
-                return;
-            }
-            DBControl.NewUser(user);
-            if (!tokenSource.IsCancellationRequested) tokenSource.Cancel();
+            //    return;
+            //}
+            //DBControl.NewUser(user);
+            //if (!tokenSource.IsCancellationRequested) tokenSource.Cancel();
 
-            App.CurrentUser = user;
-            App.UserPassword = password_tb.Password;
+            //App.CurrentUser = user;
+            //App.UserPassword = password_tb.Password;
             
-                App.Serialize();
+            //    App.Serialize();
             
           
-            window.Hide();
-            (new MainWindow()).ShowDialog();
-            window.Close();
+            //window.Hide();
+            //(new MainWindow()).ShowDialog();
+            //window.Close();
         }
         
         private void Login_tb_TextChanged(object sender, TextChangedEventArgs e)

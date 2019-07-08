@@ -12,36 +12,187 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="loc/HelloWindow/HelloWindow.en-US.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Storyboard x:Key="CubeAnimation" RepeatBehavior="Forever">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle1">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="123"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="121.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="123"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="123"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle1">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-1.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-51"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-52.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-1.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="1.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="-52.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-52.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-52.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="1.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="1.5"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle2">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle3">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="52.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="52.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="3"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle3">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle5">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-54"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-54"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="-54"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle4">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-61.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="1.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="-61.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="-60"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle4">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="106.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="103.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="105"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="106.5"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:2.8" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" >
+            <BeginStoryboard Storyboard="{StaticResource CubeAnimation}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="33*"/>
-            <ColumnDefinition Width="11*"/>
-            <ColumnDefinition Width="11*"/>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="305*"/>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="28*"/>
-            
-            <RowDefinition Height="112*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="89*"/>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="54*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="25*"/>
         </Grid.RowDefinitions>
         <TextBlock Style="{StaticResource TitleText}" TextAlignment="Center" 
-                   Text="{DynamicResource SubTitle}" Grid.ColumnSpan="5"/>
+                   Text="{DynamicResource SubTitle}" Grid.ColumnSpan="6" 
+                   VerticalAlignment="Center" Height="36" />
         <TextBlock Style="{StaticResource SimpleText}" x:Name="description" 
-                   Grid.ColumnSpan="5" 
+                   Grid.ColumnSpan="6" 
                    Grid.Row="1" Text="{DynamicResource Description}" 
-                   TextAlignment="Center" VerticalAlignment="Center" Height="13" />
-        <Border x:Name="border1" Grid.Column="3" Grid.Row="3" 
-                BorderBrush="Green" BorderThickness="2"/>
+                   TextAlignment="Center" VerticalAlignment="Center" Height="14" />
         <Button x:Name="next_b" Style="{StaticResource ButtonStyle}" Grid.Column="3" 
-                Grid.Row="3" Content="{DynamicResource next}" Click="Next_b_Click"/>
-        <Border x:Name="border2" Grid.Column="0" Grid.ColumnSpan="5" 
+                Grid.Row="7" Content="{DynamicResource next}" Click="Next_b_Click" 
+                Grid.ColumnSpan="2"/>
+        <Border x:Name="border2" Grid.Column="0" Grid.ColumnSpan="6" 
                 BorderBrush="Green" 
                 BorderThickness="2" Grid.Row="1" />
+        <Rectangle x:Name="rectangle4" Grid.Column="1" Grid.Row="3" Stroke="Black" Fill="Green" 
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Grid.Row="3" Stroke="Black" Fill="Yellow"/>
+        <Rectangle Grid.Column="3" Grid.Row="3" Stroke="Black" Fill="Blue"/>
+        <Rectangle x:Name="rectangle5" Grid.Column="1" Grid.Row="4" Stroke="Black" Fill="Blue" 
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle Grid.Column="2" Grid.Row="4" Stroke="Black" Fill="Orange"/>
+        <Rectangle x:Name="rectangle3" Grid.Column="3" Grid.Row="4" Stroke="Black" Fill="Red" 
+                   RenderTransformOrigin="0.5,0.5" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="rectangle1" Grid.Row="5" Grid.Column="1" Stroke="Black" Fill="Green" 
+                   RenderTransformOrigin="0.5,0.5"  Panel.ZIndex="2">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="rectangle" Grid.Column="2" Grid.Row="5" Stroke="Black" Fill="Yellow" 
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="rectangle2" Grid.Column="3" Grid.Row="5" Stroke="Black" Fill="White" 
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
     </Grid>
 </Window>

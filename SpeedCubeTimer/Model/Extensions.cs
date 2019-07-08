@@ -28,7 +28,7 @@ namespace SpeedCubeTimer
 
         internal static async Task SendToDBAsync(this Time time)
         {
-            await Task.Run(()=> { DBControl.InsertSolved(time); });
+            //await Task.Run(()=> { DBControl.InsertSolved(time); });
         }
         public static Scramble ToString(this String parsestring)
         {

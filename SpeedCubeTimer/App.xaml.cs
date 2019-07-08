@@ -86,9 +86,9 @@ namespace SpeedCubeTimer
                         // checking whether user deserialized is valid in db, so everyth is correct
                     {
                         
-                        var dbuser = DBControl.GetUser(CurrentUser.Username, UserPassword);
-                        CurrentUser = dbuser.Item2 ? dbuser.Item1 :
-                            throw new OperationCanceledException("User doesn't exist or is deleted");
+                        //var dbuser = DBControl.GetUser(CurrentUser.Username, UserPassword);
+                        //CurrentUser = dbuser.Item2 ? dbuser.Item1 :
+                            //throw new OperationCanceledException("User doesn't exist or is deleted");
                     }
                   
                 }

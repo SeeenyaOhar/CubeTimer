@@ -9,8 +9,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using TimerCode.Code;
 
-namespace SpeedCubeTimer.Model
+namespace SpeedCubeTimer.Model.DB
 {
+    // THERE IS NO NEED FOR THAT ANYMORE 
     static class DBControl
     {
         public static (User, bool) GetUser(String username, String password)
@@ -264,8 +265,10 @@ namespace SpeedCubeTimer.Model
         }
         // TODO: CREATE METHOD 'CHANGESOLVED' WHERE WE CAN CHANGE A ROW IDENTIFIYING IT WITH A SCRAMBLE, TIME,
         // SOT AND SO FORTH
-    }
-    public class SolvedSyncronizer
+    }  
+
+    // USED TO SHARE SOLVED TIMES IN HISTORY WITH THE DB
+        public class SolvedSyncronizer
     {
         Int32 serialized_in_times = 0;
 
@@ -282,5 +285,5 @@ namespace SpeedCubeTimer.Model
             }
             Volatile.Write(ref serialized_in_times, Time.History.Count()); 
         }
-    }
+    } 
 }

@@ -32,10 +32,13 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="title_tb" Text="{DynamicResource ResourceKey=title}" 
                    Style="{StaticResource TitleText}"  TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
-        <ListBox x:Name="lang_list" Grid.Row="1" Grid.Column="1" SelectionChanged="Lang_list_SelectionChanged">
-            <TextBlock x:Name="ru1RU" Text="{DynamicResource ResourceKey=ru-RU}" FontSize="18" FontFamily="Ubuntu"/>
-            <TextBlock x:Name="en1US" Text="{DynamicResource ResourceKey=en-US}" FontSize="18" FontFamily="Ubuntu"/>
-        </ListBox>
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <ListBox x:Name="lang_list"  SelectionChanged="Lang_list_SelectionChanged">
+                <TextBlock x:Name="ru1RU" Text="{DynamicResource ResourceKey=ru-RU}" FontSize="18" FontFamily="Ubuntu"/>
+                <TextBlock x:Name="en1US" Text="{DynamicResource ResourceKey=en-US}" FontSize="18" FontFamily="Ubuntu"/>
+            </ListBox>
+        </ScrollViewer>
+        
         <Button x:Name="save" Grid.Column="1" Grid.Row="3"
                 Content="{DynamicResource ResourceKey=save_b}"
                 Style="{StaticResource ButtonStyle}" Click="Save_Click"/>
