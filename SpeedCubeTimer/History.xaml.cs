@@ -45,7 +45,7 @@ namespace SpeedCubeTimer
             var index2 = 0;
             List<Time> ar = Time.History.ToList();
             
-            grid.RowDefinitions[0].Height = new GridLength(4, GridUnitType.Star);
+            grid.RowDefinitions[0].Height = new GridLength(2, GridUnitType.Star);
             grid.RowDefinitions[1].Height = new GridLength(11, GridUnitType.Star);
             if (countofelements > 3)
             {
@@ -67,7 +67,8 @@ namespace SpeedCubeTimer
                 {
                     TextBlock tb = new TextBlock() { FontSize = 30, Text = "None time in history was found!",
                         VerticalAlignment = VerticalAlignment.Center,
-                        HorizontalAlignment = HorizontalAlignment.Center};
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                    Style = (Style)App.Current.FindResource("MaterialDesignTitleTextBlock")};
                     grid.Children.Add(tb);
                     Grid.SetRow(tb, 1);
                     Grid.SetColumnSpan(tb,2);
@@ -84,7 +85,8 @@ namespace SpeedCubeTimer
                 grid.Children.Add(sps[i]);
                 Grid.SetRow(sps[i], 2);
                 Grid.SetColumn(sps[i], i + 1);
-                var btn = new Button() { Content = ar.Last().ToString(), Name = $"btn{index2}", Style = (Style)Application.Current.FindResource("ButtonStyle")};
+                var btn = new Button() { Content = ar.Last().ToString(), Name = $"btn{index2}",
+                    Style = (Style)Application.Current.FindResource("MaterialDesignRaisedButton") };
                 btn.Click += Btn_Click;
                 ar.RemoveAt(ar.Count - 1);
                 sps[i].Children.Add(btn);
@@ -101,7 +103,7 @@ namespace SpeedCubeTimer
                         Content = ar.Last().ToString(),
                         FontSize = 14,
                         Name = $"btn{index2}",
-                        Style = (Style)Application.Current.FindResource("ButtonStyle")
+                        Style = (Style)Application.Current.FindResource("MaterialDesignRaisedButton")
                     };
                     sps[i2].Children.Add(btn);
                     btn.Click += Btn_Click;

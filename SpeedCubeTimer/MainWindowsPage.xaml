@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SpeedCubeTimer"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       
       d:DesignHeight="450" d:DesignWidth="850"
@@ -19,92 +20,113 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85*"/>
             <ColumnDefinition Width="235*"/>
-            <ColumnDefinition Width="215*"/>
-            <ColumnDefinition Width="215*"/>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="182*"/>
+            <ColumnDefinition Width="182*"/>
             <ColumnDefinition Width="46*"/>
             <ColumnDefinition Width="54*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="96*"/>
-            <RowDefinition Height="139*"/>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="111*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="149*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="119*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="textblock1" Style="{StaticResource TitleText}" 
-                   HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="0" 
-                   VerticalAlignment="Stretch" Grid.Row="2" TextAlignment="Center"
-                   FontSize="50"  Grid.Column="2" Grid.ColumnSpan="2"/>
-       
-       
-        <TextBlock x:Name="scramble" FontSize="14" Grid.Row="0" 
-                   Grid.Column="0" HorizontalAlignment="Center"
-                   Style="{StaticResource WhiteSimpleText}"  Panel.ZIndex="2"
-                   VerticalAlignment="Center" Grid.ColumnSpan="6"
+        <TextBlock x:Name="textblock1" Style="{DynamicResource MaterialDesignTitleTextBlock}" 
+                   HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="0" Foreground="{DynamicResource ForegroundColor}"
+                   VerticalAlignment="Stretch" Grid.Row="3" TextAlignment="Center"
+                   FontSize="50"  Grid.Column="2" Grid.ColumnSpan="3" Panel.ZIndex="2"/>
+        <Button Style="{StaticResource MaterialDesignToolButton}" x:Name="settings_b" 
+                 Click="settings_b_Click" Grid.Row="0" Grid.Column="6" Width="30" Height="30"
+                FontSize="20" Panel.ZIndex="3"
+                 HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Viewbox Width="18" Height="18">
+                <Canvas Width="24" Height="24">
+                    <Path Data="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.67 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" Fill="Black" />
+                </Canvas>
+            </Viewbox>
+        </Button>
+        <materialDesign:Card Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+                             Panel.ZIndex="2" VerticalAlignment="Stretch">
+            <TextBlock x:Name="scramble" FontSize="14" 
+                    HorizontalAlignment="Center"
+                   Style="{DynamicResource MaterialDesignHeadlineTextBlock}"  
+                   VerticalAlignment="Center"
                    TextAlignment="Center"/>
-        <TextBlock x:Name="avgs" FontSize="10" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"/>
-        <StackPanel x:Name="sp" Grid.Row="1" Grid.RowSpan="2" Grid.Column="4"/>
-        <Button Style="{StaticResource ButtonStyle}" x:Name="sec2" Grid.Column="2" 
-                Grid.Row="3" Content="+ 2 SEC" Click="sec2_Click" IsEnabled="False" 
-                Background="Gray" />
-        <Button Style="{StaticResource ButtonStyle}" x:Name="dnf" Grid.Column="3" Grid.Row="3" 
-                Content="DNF" Click="dnf_Click" IsEnabled="False" Background="Gray"/>
-        <Grid x:Name="grid1" Grid.Column="1" Grid.Row="2" Grid.RowSpan="2">
-            <Grid.ColumnDefinitions>
+        </materialDesign:Card>
 
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="3"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
+        <Button Style="{StaticResource MaterialDesignToolButton}" x:Name="history_b" 
+                 
+                FontSize="20" Click="history_b_Click" Grid.Row="0" Height="30" Width="30" Panel.ZIndex="3"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Viewbox Width="18" Height="18">
+                <Canvas Width="24" Height="24">
+                    <Path Data="M5.12,5L5.93,4H17.93L18.87,5M12,17.5L6.5,12H10V10H14V12H17.5L12,17.5M20.54,5.23L19.15,3.55C18.88,3.21 18.47,3 18,3H6C5.53,3 5.12,3.21 4.84,3.55L3.46,5.23C3.17,5.57 3,6 3,6.5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V6.5C21,6 20.83,5.57 20.54,5.23Z" Fill="Black" />
+                </Canvas>
+            </Viewbox>
+        </Button>
+        
+        <StackPanel x:Name="sp" Grid.Row="1" Grid.RowSpan="3" Grid.Column="5"/>
+        <Button Style="{DynamicResource MaterialDesignRaisedButton}" x:Name="sec2" Grid.Column="3" 
+                Grid.Row="4" Content="+ 2 SEC" Click="sec2_Click" IsEnabled="False" Margin="0,8,0,7" Height="Auto" />
 
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="4"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="4"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-            </Grid.RowDefinitions>
-            <Border Grid.Row="1" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
-            <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BorderScramble}"/>
-            <Border Grid.Row="5" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
-            <Border Grid.Row="5" Grid.Column="9" Style="{StaticResource BorderScramble}"/>
-            <Border Grid.Row="5" Grid.Column="13" Style="{StaticResource BorderScramble}"/>
-            <Border Grid.Row="9" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
-        </Grid>
-        <Canvas Background="{StaticResource ForegroundColor}" HorizontalAlignment="Stretch" 
+        <Button Style="{StaticResource MaterialDesignRaisedButton}" x:Name="dnf" Grid.Column="4" Grid.Row="4" 
+                Content="DNF" Click="dnf_Click" IsEnabled="False" Margin="0,8,0,7" Height="Auto" />
+        <materialDesign:Card Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Height="173">
+            <Grid x:Name="grid1" >
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="1" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="5" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="5" Grid.Column="9" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="5" Grid.Column="13" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="9" Grid.Column="5" Style="{StaticResource BorderScramble}"/>
+            </Grid>
+        </materialDesign:Card>
+
+        <!--<Canvas Background="{StaticResource ForegroundColor}" HorizontalAlignment="Stretch" 
                 VerticalAlignment="Stretch" 
-                 Grid.ColumnSpan="6" Panel.ZIndex="1"/>
-        <StackPanel Grid.Row="1" Grid.RowSpan="5" Panel.ZIndex="1">
-            <Button Style="{StaticResource ButtonStyle}" x:Name="history_b" 
-                 Content="{DynamicResource ResourceKey=history_but}" 
-                FontSize="20" Click="history_b_Click"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <Button Style="{StaticResource ButtonStyle}" x:Name="settings_b" 
-                 Click="settings_b_Click"
-                FontSize="20" Content="{DynamicResource ResourceKey=settings_but}"
-                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        </StackPanel>
+                 Grid.ColumnSpan="7" Panel.ZIndex="1"/>-->
+
+       
+        
+        
     </Grid>
 </Page>

@@ -79,23 +79,27 @@ namespace SpeedCubeTimer
             InnerPages.Add(page);
             Button button = new Button()
             {
-                Style = (Style)App.Current.FindResource("ButtonStyle"),
+                Style = (Style)App.Current.FindResource("MaterialDesignRaisedButton"),
                 
             };
             button.SetResourceReference(ContentControl.ContentProperty, "next");
             button.Click += Button_Click;
             page.grid.Children.Add(button);
             Grid.SetColumn(button, 2);
-            Grid.SetRow(button, 2);
+            Grid.SetRow(button, 3);
             this.Height = page.Height + 40;
             this.Width = page.Width + 40;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new AuthorizationPage(this);
-            this.Height = 450;
-            this.Width = 800;
+            this.Hide();
+            App.Serialize();
+            var timerwindow = new MainWindow();
+            timerwindow.ShowDialog();
+            this.Close();
+            //this.Height = 450;
+            //this.Width = 800;
             
             
         }

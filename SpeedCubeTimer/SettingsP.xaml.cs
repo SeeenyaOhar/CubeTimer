@@ -34,7 +34,8 @@ namespace SpeedCubeTimer
             InitializeComponent();
             LocUtil.LanguageChanged += LocUtil_LanguageChanged;
             LocUtil.SwitchLanguage(this, App.Language.ToString());
-            var general_button = new Button() { Content = (String)Resources.MergedDictionaries[0]["general_menu"], Style = (Style) Application.Current.FindResource("ButtonStyle") };
+            var general_button = new Button() { Content = (String)Resources.MergedDictionaries[0]["general_menu"],
+                Style = (Style) Application.Current.FindResource("MaterialDesignRaisedButton") };
             general_button.Click += General_button_Click;
             this.mw = mw;
             stp1.Children.Add(general_button);
@@ -61,7 +62,7 @@ namespace SpeedCubeTimer
             var general_button = new Button()
             {
                 Content = (String)Resources.MergedDictionaries[0]["general_menu"],
-                Style = (Style)Application.Current.FindResource("ButtonStyle")
+                Style = (Style)Application.Current.FindResource("MaterialDesignRaisedButton")
             };
             general_button.Click += General_button_Click;
             ar = new List<List<int>>(stp1.Children.Count);
@@ -86,31 +87,43 @@ namespace SpeedCubeTimer
             // I. HERE WE ADD COMMENTS FOR UI CONTROLS
             var save_file_tb = new TextBlock() { // CHANGES FILE PATH OF SAVED RESULTS
                 Text = (String)Resources.MergedDictionaries[0]["save_file_tb"],
+                VerticalAlignment = VerticalAlignment.Center,
+                Height = 30,
+                Foreground = (Brush)App.Current.FindResource("ForegroundColor"),
                 TextAlignment = TextAlignment.Center,
-                Style = (Style)Application.Current.FindResource("SimpleText")
+                Style = (Style)Application.Current.FindResource("MaterialDesignBody1TextBlock")
             };
+            save_file_tb.SetResourceReference(ContentControl.ForegroundProperty, "ForegroundColor");
             comments.Add(save_file_tb);
             
             
             var theme_tb = new TextBlock() { // CHANGES THEME OF APP
-                Style = (Style)Application.Current.FindResource("SimpleText"),
+                Style = (Style)Application.Current.FindResource("MaterialDesignBody1TextBlock"),
+                VerticalAlignment = VerticalAlignment.Center,
                 Text = (String)Resources.MergedDictionaries[0]["theme_text"],
+                Foreground = (Brush)App.Current.FindResource("ForegroundColor"),
+                Height = 30,
                 TextAlignment = TextAlignment.Center
             };
+            theme_tb.SetResourceReference(ContentControl.ForegroundProperty, "ForegroundColor");
             comments.Add(theme_tb);
             var lang_tb = new TextBlock()
             { // CHANGES LANGUAGE OF APP
                 Text = (String)Resources.MergedDictionaries[0]["lang"],
                 TextAlignment = TextAlignment.Center,
+                Height = 30,
                 VerticalAlignment = VerticalAlignment.Center,
-                Style = (Style)Application.Current.FindResource("SimpleText")
+                
+                Style = (Style)Application.Current.FindResource("MaterialDesignBody1TextBlock")
             };
+            lang_tb.SetResourceReference(ContentControl.ForegroundProperty, "ForegroundColor");
             comments.Add(lang_tb);
             // II. HERE WE ADD UI CONTROLS
             var tbox = new System.Windows.Controls.TextBox()
             {
-                Style = (Style)Application.Current.FindResource("TextBoxStyle")
+                Style = (Style)Application.Current.FindResource("MaterialDesignTextBox")
             };
+            tbox.SetResourceReference(ForegroundProperty, "ForegroundColor");
             tbox.Text = App.SolvedTimesTextDocPath;
             tbox.TextChanged += Tbox_TextChanged;
             gen_elem.Add(tbox); // ADDING TO LIST
@@ -125,9 +138,9 @@ namespace SpeedCubeTimer
                 Width = new GridLength(2, GridUnitType.Star) });
             // HERE ARE BUTTONS TO CHANGE A THEME OF APP
             var button1 = new Button() { Content = (String)Resources.MergedDictionaries[0]["black"],
-                Style = (Style)Application.Current.FindResource("ButtonStyle") , Name = "Black"};
+                Style = (Style)Application.Current.FindResource("MaterialDesignRaisedButton") , Name = "Black"};
             var button2 = new Button() { Content = (String)Resources.MergedDictionaries[0]["white"],
-                Style = (Style)Application.Current.FindResource("ButtonStyle") , Name = "White"};
+                Style = (Style)Application.Current.FindResource("MaterialDesignRaisedButton") , Name = "White"};
             button1.Click += Button1_Click;
             button2.Click += Button1_Click;
 
@@ -141,7 +154,7 @@ namespace SpeedCubeTimer
             // HERE IS BUTTON TO CREATE NEW LANGUAGE CHANGE WINDOW
             var lang_change_but = new Button() {
                 Content = (String)Resources.MergedDictionaries[0]["lang_change"],
-                Style = (Style)Application.Current.FindResource("ButtonStyle")
+                Style = (Style)Application.Current.FindResource("MaterialDesignRaisedButton")
             };
             lang_change_but.Click += Lang_change_but_Click;
             gen_elem.Add(lang_change_but); // ADDING TO LIST
@@ -168,12 +181,12 @@ namespace SpeedCubeTimer
             var lang_page = new LanguageChange(); // creating language page to navigate to it
             var back_sett = new Button() { // BUTTON'S PURPOSE: TO GO BACK OUT OF LANGUAGE CHANGE
                 
-                Style = (Style)App.Current.FindResource("ButtonStyle")
+                Style = (Style)App.Current.FindResource("MaterialDesignRaisedButton")
             };
             back_sett.SetResourceReference(ContentControl.ContentProperty, "back");
             back_sett.Click += Back_sett_Click;
             lang_page.grid.Children.Add(back_sett); // adding to page's grid button
-            Grid.SetRow(back_sett, 2);
+            Grid.SetRow(back_sett, 1);
             mw.Hide();
             mw.Height = lang_page.Height + 40;
             mw.Width = lang_page.Width + 40;

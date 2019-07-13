@@ -27,19 +27,19 @@ namespace SpeedCubeTimer
     public partial class MainWindowsPage : Page
     {
         MainWindow mw;
-        User user = null;
+        //User user = null;
         //SolvedSyncronizer ssync;
-        public MainWindowsPage(MainWindow mw, User user = null)
+        public MainWindowsPage(MainWindow mw) //, User user = null
         {
             InitializeComponent();
             scramble.Text = scramble1.ToString();
 
 
-            if (user == null)
-            {
-                this.user = App.CurrentUser;
-            }
-            else this.user = user;
+            //if (user == null)
+            //{
+            //    this.user = App.CurrentUser;
+            //}
+            //else this.user = user;
             
             mw.Closing += MainWindow_Closing;
             this.mw = mw;
@@ -101,14 +101,14 @@ namespace SpeedCubeTimer
                 sdnf = value;
                 if (value == true)
                 {
-                    dnf.Background = Brushes.LightBlue;
+                    
                     Time.History[Time.History.Count - 1].SOT = StateOfTime.DNF;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
                     GetEveryAverage();
                 }
                 else
                 {
-                    dnf.Background = Brushes.Gray;
+                    
                     Time.History[Time.History.Count - 1].SOT = StateOfTime.Default;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
                     GetEveryAverage();
@@ -128,7 +128,7 @@ namespace SpeedCubeTimer
                 {
                     Time.History[Time.History.Count - 1].SOT = StateOfTime.SEC2;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
-                    sec2.Background = Brushes.LightBlue;
+                    
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                     GetEveryAverage();
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
@@ -138,7 +138,7 @@ namespace SpeedCubeTimer
                 {
                     Time.History[Time.History.Count - 1].SOT = StateOfTime.Default;
                     textblock1.Text = Time.History[Time.History.Count - 1].ToString();
-                    sec2.Background = Brushes.Gray;
+                    
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                     GetEveryAverage();
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
@@ -382,7 +382,7 @@ namespace SpeedCubeTimer
         }
         void InitializeCubingTimer()
         {
-            Timer = new CubingTimer(user); // TODO: fix this
+            Timer = new CubingTimer(); // TODO: fix this
             Timer.Started += Timer_Started;
             Handlers.TimeChanged += CurrentTime_TimeChanged;
             
@@ -396,8 +396,8 @@ namespace SpeedCubeTimer
             Time avg12 = await GetAverageAsync(12);
             Time avg50 = await GetAverageAsync(50);
             Time avg100 = await GetAverageAsync(100);
-            // TODO: Output avgs on UI
-            grid.Children.Remove(sp);
+            
+            //grid.Children.Remove(sp);
             Int32 index = 0;
             List<Int32> ii = new List<Int32>();
             
@@ -418,14 +418,20 @@ namespace SpeedCubeTimer
             grid.Children.Add(stp);
             Grid.SetRow(stp, 1);
             Grid.SetRowSpan(stp, 2);
-            Grid.SetColumn(stp, 2);
-            Grid.SetColumnSpan(stp, 2);
+            Grid.SetColumn(stp, 1);
+            
             Style simpletextstyle= (Style)App.Current.FindResource("SimpleText") ;
-            stp.Children.Add(new TextBlock() { Text = $"avg3 = {avg3}" ,Style = simpletextstyle});
-            stp.Children.Add(new TextBlock() { Text = $"avg5 = {avg5}" , Style = simpletextstyle });
-            stp.Children.Add(new TextBlock() { Text = $"avg12 = {avg12}", Style = simpletextstyle });
-            stp.Children.Add(new TextBlock() { Text = $"avg50 = {avg50}", Style = simpletextstyle });
-            stp.Children.Add(new TextBlock() { Text = $"avg100 = {avg100}", Style = simpletextstyle });
+            stp.Children.Add(new TextBlock());
+            stp.Children.Add(new TextBlock() { Text = $"avg3 = {avg3}" ,Style = simpletextstyle,
+                TextAlignment = TextAlignment.Center});
+            stp.Children.Add(new TextBlock() { Text = $"avg5 = {avg5}" , Style = simpletextstyle,
+            TextAlignment = TextAlignment.Center });
+            stp.Children.Add(new TextBlock() { Text = $"avg12 = {avg12}", Style = simpletextstyle,
+                TextAlignment = TextAlignment.Center });
+            stp.Children.Add(new TextBlock() { Text = $"avg50 = {avg50}", Style = simpletextstyle,
+                TextAlignment = TextAlignment.Center });
+            stp.Children.Add(new TextBlock() { Text = $"avg100 = {avg100}", Style = simpletextstyle,
+                TextAlignment = TextAlignment.Center });
         }
         async static Task<Time> GetAverageAsync(int count)
         {
@@ -446,8 +452,8 @@ namespace SpeedCubeTimer
             }
             catch (ArgumentException ae)
             {
-                return new Time(new Scramble(), new User());
-                
+                return new Time(new Scramble()); // , new User()
+
             }
         }
 

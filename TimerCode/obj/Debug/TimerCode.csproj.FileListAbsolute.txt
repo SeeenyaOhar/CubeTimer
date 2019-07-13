@@ -16,3 +16,9 @@ C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\TimerCode\obj\Debug\TimerCo
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\TimerCode\obj\Debug\TimerCode.dll
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\TimerCode\obj\Debug\TimerCode.pdb
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\TimerCode\obj\Debug\TimerCode.csprojAssemblyReference.cache
+E:\backup\SpeedCubeTimer\CubeTimer\TimerCode\bin\Debug\TimerCode.dll
+E:\backup\SpeedCubeTimer\CubeTimer\TimerCode\bin\Debug\TimerCode.pdb
+E:\backup\SpeedCubeTimer\CubeTimer\TimerCode\obj\Debug\TimerCode.csprojAssemblyReference.cache
+E:\backup\SpeedCubeTimer\CubeTimer\TimerCode\obj\Debug\TimerCode.csproj.CoreCompileInputs.cache
+E:\backup\SpeedCubeTimer\CubeTimer\TimerCode\obj\Debug\TimerCode.dll
+E:\backup\SpeedCubeTimer\CubeTimer\TimerCode\obj\Debug\TimerCode.pdb

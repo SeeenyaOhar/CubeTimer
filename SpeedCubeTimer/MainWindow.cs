@@ -20,17 +20,17 @@ namespace SpeedCubeTimer
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(User user = null)
-        {
-            InitializeComponent();
+        //public MainWindow(User user = null)
+        //{
+        //    InitializeComponent();
             
-            App.Deserialize();
+        //    App.Deserialize();
 
-            this.Closing += MainWindow_Closing; 
-            this.Content = new MainWindowsPage(this, user); // it won't be a problem if user is null
-            // there is a null check
+        //    this.Closing += MainWindow_Closing; 
+        //    this.Content = new MainWindowsPage(this, user); // it won't be a problem if user is null
+        //    // there is a null check
            
-        }
+        //}
         public MainWindow()
         {
             InitializeComponent();
@@ -38,8 +38,8 @@ namespace SpeedCubeTimer
             App.Deserialize();
 
             this.Closing += MainWindow_Closing;
-            this.Content = new MainWindowsPage(this, null); // it won't be a problem if user is null
-                                                            // there is a null check
+            this.Content = new MainWindowsPage(this); // , null // it won't be a problem if user is null
+                                                      // there is a null check
 
         }
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

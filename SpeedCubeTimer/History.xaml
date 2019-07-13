@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SpeedCubeTimer"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="History" Style="{StaticResource PageBase}">
@@ -21,16 +22,29 @@
         <ScrollViewer>
             <Grid x:Name="grid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="43*"/>
-                    <RowDefinition Height="407*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="20*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Style="{StaticResource TitleText}" x:Name="history_tb"  Text="{DynamicResource title}" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="5"/>
-                <Button Style="{StaticResource ButtonStyle}"  x:Name="back_b" Grid.Column="0" Grid.Row="0" Content="{DynamicResource back}" FontSize="20" Click="Back_b_Click"/>
+                <materialDesign:Card Grid.ColumnSpan="5" VerticalAlignment="Stretch">
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}" x:Name="history_tb"  
+                               Text="{DynamicResource title}" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </materialDesign:Card>
+                
+                    <Button Style="{StaticResource MaterialDesignToolButton}"  x:Name="back_b" 
+                         FontSize="20" Click="Back_b_Click">
+                    <Viewbox Width="48" Height="48" VerticalAlignment="Center">
+                        <Canvas Width="24" Height="24">
+                            <Path Data="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" Fill="Black" />
+                        </Canvas>
+                    </Viewbox>
+                    </Button>
+                
+                
             </Grid>
         </ScrollViewer>
         

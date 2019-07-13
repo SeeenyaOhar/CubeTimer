@@ -21,6 +21,7 @@ namespace SpeedCubeTimer
     /// <summary>
     /// Interaction logic for AuthorizationPage.xaml
     /// </summary>
+    /// This is used to 
     public partial class AuthorizationPage : Page, INotifyPropertyChanged
     {
         Window window;

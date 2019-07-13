@@ -28,8 +28,8 @@ namespace SpeedCubeTimer
         public static Themes Theme { get { return theme; } set { theme = value; } }
         // implement the next property with a securestring variable
         public static String MySqlConStr { get { return "Server=sql7.freemysqlhosting.net; Database=sql7290629; Uid=sql7290629; Pwd=3Hkud9XFAW;"; } }
-        public static User CurrentUser { get; internal set; }
-        public static String UserPassword { get; set; }
+        //public static User CurrentUser { get; internal set; }
+        //public static String UserPassword { get; set; }
         public class ThemeEventArgs : EventArgs
         {
             public Themes ThemeChanged { get; private set; }
@@ -82,14 +82,14 @@ namespace SpeedCubeTimer
                         
                         
                     }
-                    if (CurrentUser != null) 
-                        // checking whether user deserialized is valid in db, so everyth is correct
-                    {
+                    //if (CurrentUser != null) 
+                    //    // checking whether the user deserialized is valid in db, so everyth is correct
+                    //{
                         
-                        //var dbuser = DBControl.GetUser(CurrentUser.Username, UserPassword);
-                        //CurrentUser = dbuser.Item2 ? dbuser.Item1 :
-                            //throw new OperationCanceledException("User doesn't exist or is deleted");
-                    }
+                    //    //var dbuser = DBControl.GetUser(CurrentUser.Username, UserPassword);
+                    //    //CurrentUser = dbuser.Item2 ? dbuser.Item1 :
+                    //        //throw new OperationCanceledException("User doesn't exist or is deleted");
+                    //}
                   
                 }
             }

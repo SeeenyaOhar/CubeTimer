@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeedCubeTimer"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
          Height="500" Width="400">
 
@@ -25,22 +26,28 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="37*"/>
-            <RowDefinition Height="150*"/>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="25*"/>
+            <RowDefinition Height="79*"/>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="288*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="53*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="title_tb" Text="{DynamicResource ResourceKey=title}" 
-                   Style="{StaticResource TitleText}"  TextAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
+        <materialDesign:Card Grid.ColumnSpan="3" VerticalAlignment="Stretch">
+            <TextBlock x:Name="title_tb" Text="{DynamicResource ResourceKey=title}" 
+                   Style="{StaticResource TitleText}"  TextAlignment="Center" VerticalAlignment="Center" />
+        </materialDesign:Card>
+
+        <ScrollViewer Grid.Row="2" Grid.Column="1" >
             <ListBox x:Name="lang_list"  SelectionChanged="Lang_list_SelectionChanged">
-                <TextBlock x:Name="ru1RU" Text="{DynamicResource ResourceKey=ru-RU}" FontSize="18" FontFamily="Ubuntu"/>
-                <TextBlock x:Name="en1US" Text="{DynamicResource ResourceKey=en-US}" FontSize="18" FontFamily="Ubuntu"/>
+                <TextBlock x:Name="ru1RU" Text="{DynamicResource ResourceKey=ru-RU}" FontSize="18" 
+                           FontFamily="Ubuntu" Foreground="{DynamicResource ForegroundColor}"/>
+                <TextBlock x:Name="en1US" Text="{DynamicResource ResourceKey=en-US}" FontSize="18" 
+                           FontFamily="Ubuntu" Foreground="{DynamicResource ForegroundColor}"/>
             </ListBox>
         </ScrollViewer>
-        
-        <Button x:Name="save" Grid.Column="1" Grid.Row="3"
+
+        <Button x:Name="save" Grid.Column="1" Grid.Row="4"
                 Content="{DynamicResource ResourceKey=save_b}"
-                Style="{StaticResource ButtonStyle}" Click="Save_Click"/>
+                Style="{StaticResource MaterialDesignRaisedButton}" Click="Save_Click" Margin="0,11,0,10"/>
     </Grid>
 </Page>

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeedCubeTimer"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
          Height="353" Width="387" ResizeMode="CanMinimize" Style="{StaticResource WindowBase}">
     <Window.Resources>
@@ -25,45 +26,57 @@
             <RowDefinition Height="196*"/>
             <RowDefinition Height="69*"/>
         </Grid.RowDefinitions>
-        <TextBlock Style="{StaticResource TitleText}" x:Name="title" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" TextAlignment="Center" FontSize="26" Grid.RowSpan="2"/>
-        <TextBlock Style="{StaticResource TitleText}" x:Name="scr_tb" Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="3" Height="19"/>
-        <Grid Grid.Column="1" Grid.Row="2" Background="Black" x:Name="grid1" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="5"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
-                <ColumnDefinition Width="15"/>
+        <TextBlock Style="{StaticResource TitleText}" x:Name="title" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
+                   TextAlignment="Center" FontSize="26" Grid.RowSpan="2" Foreground="{DynamicResource ForegroundColor}"/>
+        <TextBlock Style="{StaticResource TitleText}" x:Name="scr_tb" Grid.Column="0" Grid.Row="1" TextAlignment="Center" 
+                   VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="3" Height="19" 
+                   Foreground="{DynamicResource ForegroundColor}"/>
+        <materialDesign:Card Grid.Column="1" Grid.Row="2">
+            <Grid  x:Name="grid1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="15"/>
 
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="4"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="4"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-                <RowDefinition Height="15"/>
-            </Grid.RowDefinitions>
-        </Grid>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Row="1" Grid.Column="6" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="5" Grid.Column="2" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="5" Grid.Column="6" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="5" Grid.Column="10" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="5" Grid.Column="14" Style="{StaticResource BorderScramble}"/>
+                <Border Grid.Row="9" Grid.Column="6" Style="{StaticResource BorderScramble}"/>
+            </Grid>
+        </materialDesign:Card>
+        
     </Grid>
 </Window>

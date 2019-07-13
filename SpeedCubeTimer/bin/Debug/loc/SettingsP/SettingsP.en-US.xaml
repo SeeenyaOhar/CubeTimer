@@ -4,8 +4,8 @@
     <sys:String x:Key="ResourceDictionaryName">Loc-en-US</sys:String>
     <sys:String x:Key="settings_title">Settings</sys:String>
     <sys:String x:Key="back_but">Back</sys:String>
-    <sys:String x:Key="general_menu">General</sys:String>
-    <sys:String x:Key="save_file_tb">Path of file, in which solved times are saved.</sys:String>
+    <sys:String x:Key="general_menu">GENERAL</sys:String>
+    <sys:String x:Key="save_file_tb">Path of file,which solved times are saved in.</sys:String>
     <sys:String x:Key="save_but">SAVE</sys:String>
     <sys:String x:Key="theme_text">Theme</sys:String>
     <sys:String x:Key="black">Black</sys:String>

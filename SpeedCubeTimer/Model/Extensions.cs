@@ -91,7 +91,7 @@ namespace SpeedCubeTimer
                 milliseconds = Convert.ToInt32(split[1]); // getting seconds - "2.2" - seconds 2 means milliseconds
                 seconds = Convert.ToInt16(split[0]);
             }
-            Time time = new Time(hours, minutes, seconds, milliseconds, scramble, user);
+            Time time = new Time(hours, minutes, seconds, milliseconds, scramble); //, user
             time.SOT = sot;
             return time;
         }

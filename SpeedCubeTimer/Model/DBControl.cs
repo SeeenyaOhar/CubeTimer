@@ -171,11 +171,13 @@ namespace SpeedCubeTimer.Model.DB
             {
                 
                     // here goes query
-                    var command = new MySqlCommand($"CALL InsertSolved({solved.UserSolved.id}, " +
-                        $"'{solved.scramble.ToString(true)}', " +
-                        $"'{solved.ToString()}', '{solved.SOT}');", connection);
+
+                    //var command = new MySqlCommand($"CALL InsertSolved({solved.UserSolved.id <---- mistake}, " +
+                    //    $"'{solved.scramble.ToString(true)}', " +
+                    //    $"'{solved.ToString()}', '{solved.SOT}');", connection);
+
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    //command.ExecuteNonQuery();
                     return true;
 
                 }
@@ -222,9 +224,9 @@ namespace SpeedCubeTimer.Model.DB
             
             
         }
-        //<summary
+        ///<summary
         // Gets all the times out of DB solved by the current user
-        //</summary>
+        ///</summary>
         public static IList<Time> GetSolved(this User user)
         {
             
