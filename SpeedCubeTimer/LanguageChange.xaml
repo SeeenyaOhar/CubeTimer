@@ -48,6 +48,6 @@
 
         <Button x:Name="save" Grid.Column="1" Grid.Row="4"
                 Content="{DynamicResource ResourceKey=save_b}"
-                Style="{StaticResource MaterialDesignRaisedButton}" Click="Save_Click" Margin="0,11,0,10"/>
+                Style="{StaticResource MaterialDesignRaisedButton}" Click="Save_Click" />
     </Grid>
 </Page>

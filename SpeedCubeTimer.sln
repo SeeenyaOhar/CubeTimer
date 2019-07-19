@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedCubeTimer", "SpeedCubeTimer\SpeedCubeTimer.csproj", "{C82C2B75-5129-4CAF-9423-6C278B8DE59D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTimer", "ConsoleTimer\ConsoleTimer.csproj", "{25C82C0D-764E-4BFF-9A2F-B99BED405AA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerCode", "TimerCode\TimerCode.csproj", "{6814B01E-1408-4627-89FA-008C1C47D1CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FringleTimer", "FringleTimer\FringleTimer.csproj", "{3B9E434B-87E2-4740-99CD-F36A12639392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6814B01E-1408-4627-89FA-008C1C47D1CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6814B01E-1408-4627-89FA-008C1C47D1CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6814B01E-1408-4627-89FA-008C1C47D1CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B9E434B-87E2-4740-99CD-F36A12639392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B9E434B-87E2-4740-99CD-F36A12639392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B9E434B-87E2-4740-99CD-F36A12639392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B9E434B-87E2-4740-99CD-F36A12639392}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,3 +22,17 @@ C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\Co
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.csproj.CopyComplete
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.exe
 C:\Users\Senya\source\repos\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.pdb
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\ConsoleTimer.exe.config
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\ConsoleTimer.exe
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\ConsoleTimer.pdb
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\Microsoft.Expression.Interactions.dll
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\System.Windows.Interactivity.dll
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\TimerCode.dll
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\TimerCode.pdb
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\Microsoft.Expression.Interactions.xml
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\bin\Release\System.Windows.Interactivity.xml
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.csprojAssemblyReference.cache
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.csproj.CoreCompileInputs.cache
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.csproj.CopyComplete
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.exe
+E:\backup\SpeedCubeTimer\CubeTimer\ConsoleTimer\obj\Release\ConsoleTimer.pdb

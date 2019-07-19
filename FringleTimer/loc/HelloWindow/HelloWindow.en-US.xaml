@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">Loc-en-US</sys:String>
+    <sys:String x:Key="Title">Hi. You are welcome to our environment.</sys:String>
+    <sys:String x:Key="SubTitle">Greatings to Timer</sys:String>
+    <sys:String x:Key="Lang_Change_b">Change Language</sys:String>
+    <sys:String x:Key="FirstSettings">First Settings</sys:String>
+    <sys:String x:Key="Description">We're going to set your future timer. Click buttons to change language and some options. Don't worry, you can set them later.</sys:String>
+    <sys:String x:Key="next">NEXT</sys:String>
+</ResourceDictionary>

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpeedCubeTimer"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+       
         mc:Ignorable="d"
         Title="{DynamicResource Title}" Height="450" Width="800" Closed="Window_Closed" 
         Style="{StaticResource WindowBase}" ResizeMode="CanMinimize" Closing="Window_Closing">
@@ -146,6 +147,9 @@
             <BeginStoryboard Storyboard="{StaticResource CubeAnimation}"/>
         </EventTrigger>
     </Window.Triggers>
+    
+        
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="305*"/>

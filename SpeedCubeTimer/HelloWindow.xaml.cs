@@ -86,7 +86,7 @@ namespace SpeedCubeTimer
             button.Click += Button_Click;
             page.grid.Children.Add(button);
             Grid.SetColumn(button, 2);
-            Grid.SetRow(button, 3);
+            Grid.SetRow(button, 4);
             this.Height = page.Height + 40;
             this.Width = page.Width + 40;
         }

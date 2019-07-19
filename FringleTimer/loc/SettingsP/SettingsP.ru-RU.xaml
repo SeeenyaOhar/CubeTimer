@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="ResourceDictionaryName">Loc-ru-RU</sys:String>
+    <sys:String x:Key="settings_title">Настройки</sys:String>
+    <sys:String x:Key="back_but">Назад</sys:String>
+    <sys:String x:Key="general_menu">Основное</sys:String>
+    <sys:String x:Key="save_file_tb">Путь к файлу, где сохраняются сборки.</sys:String>
+    <sys:String x:Key="save_but">СОХРАНИТЬ</sys:String>
+    <sys:String x:Key="theme_text">Тема</sys:String>
+    <sys:String x:Key="black">Черная</sys:String>
+    <sys:String x:Key="white">Белый</sys:String>
+    <sys:String x:Key="lang">Язык</sys:String>
+    <sys:String x:Key="lang_change">СМЕНИТЬ</sys:String>
+    <sys:String x:Key="back">НАЗАД</sys:String>
+</ResourceDictionary>
